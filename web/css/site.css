@@ -220,6 +220,10 @@ a.desc:after {
       border-color: transparent;
       color: #fff !important;
   }
+  /*agregando color*/
+  .navbar-inverse{
+    background-color: #0fadec;
+  }
   footer .glyphicon {
       font-size: 20px;
       margin-bottom: 20px;

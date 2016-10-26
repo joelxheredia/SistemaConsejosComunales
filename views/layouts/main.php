@@ -74,6 +74,7 @@ AppAsset::register($this);
         <li><a href="#pricing">PRICING</a></li>
         <li><a href="#contact">CONTACT</a></li>
         <li><a href="#contact">2AQUI2</a></li>
+         <li><a href="#contact">PUPU</a></li>
       </ul>
     </div>
   </div>

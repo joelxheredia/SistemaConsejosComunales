@@ -33,7 +33,7 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-   /* echo Nav::widget([
+   echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
@@ -52,10 +52,11 @@ AppAsset::register($this);
                 . '</li>'
             )
         ],
-    ]);*/
+    ]);
     
     NavBar::end();
     ?>
+    <!--
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -78,7 +79,7 @@ AppAsset::register($this);
     </div>
   </div>
 </nav>
-
+-->
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

@@ -1575,6 +1575,8 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`ConsejoComunal` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `consejocomunal` (`idConsejoComunal`, `NombreConsejoComunal`, `fechaInscripcionConsejoComunal`, `Parroquias_idParroquias`) VALUES (NULL, 'Consejo Prueba', '2016-11-01', '1');
+
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`TipoIdentificacion`
@@ -1585,6 +1587,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`TipoIdentificacion` (
   PRIMARY KEY (`idTipoIdentificacion`))
 ENGINE = InnoDB;
 
+INSERT INTO `tipoidentificacion` (`idTipoIdentificacion`, `descripcion`) VALUES ('1', 'Cedula');
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`NivelInstruccion`
@@ -1595,6 +1598,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`NivelInstruccion` (
   PRIMARY KEY (`idNivelInstruccion`))
 ENGINE = InnoDB;
 
+INSERT INTO `nivelinstruccion` (`idNivelInstruccion`, `descripcion`) VALUES (NULL, 'Secundaria');
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`EstadosCiviles`
@@ -1605,7 +1609,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`EstadosCiviles` (
   PRIMARY KEY (`idEstadosCiviles`))
 ENGINE = InnoDB;
 
-
+INSERT INTO `estadosciviles` (`idEstadosCiviles`, `decripcion`) VALUES (NULL, 'Soltero');
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Cargo`
 -- -----------------------------------------------------
@@ -1615,6 +1619,8 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Cargo` (
   `descripcionCargo` VARCHAR(100) NULL,
   PRIMARY KEY (`idCargo`))
 ENGINE = InnoDB;
+
+INSERT INTO `cargo` (`idCargo`, `nombreCargo`, `descripcionCargo`) VALUES (NULL, 'Jefe FundaComunal', NULL);
 
 
 -- -----------------------------------------------------
@@ -1638,7 +1644,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Persona` (
   `EstadosCiviles_idEstadosCiviles` INT NOT NULL,
   `Cargo_idCargo` INT NOT NULL,
   `ConsejoComunal_idConsejoComunal` INT NOT NULL,
-  `Persona_cedulaPersona` INT NOT NULL,
+  `Persona_cedulaPersona` INT  NULL,
   PRIMARY KEY (`cedulaPersona`),
   INDEX `fk_Persona_TipoIdentificacion_idx` (`TipoIdentificacion_idTipoIdentificacion` ASC),
   INDEX `fk_Persona_NivelInstruccion1_idx` (`NivelInstruccion_idNivelInstruccion` ASC),
@@ -1678,6 +1684,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Persona` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `persona` (`cedulaPersona`, `primerNombre`, `segundoNombre`, `primerApellido`, `segundoApelllido`, `fechaNacimiento`, `edad`, `sexo`, `direccion`, `correoElectronico`, `incapacidad`, `pensionado`, `TipoIdentificacion_idTipoIdentificacion`, `NivelInstruccion_idNivelInstruccion`, `EstadosCiviles_idEstadosCiviles`, `Cargo_idCargo`, `ConsejoComunal_idConsejoComunal`, `Persona_cedulaPersona`) VALUES ('23542402', 'Tyson', NULL, 'Cardelli', NULL, '1993-06-15', '23', 'M', 'Av Carabobo', 'tysoncardelli@gmail.com', NULL, NULL, '1', '1', '1', '1', '1', NULL);
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`TipoSolicitud`
@@ -1734,7 +1741,7 @@ ENGINE = InnoDB;
 -- Table `ConsejosComunales`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Usuario` (
-  `idUsuario` INT NOT NULL,
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `nombreUsuario` VARCHAR(60) NOT NULL,
   `contraseña` VARCHAR(50) NOT NULL,
   `fechaCreacion` DATE NOT NULL,
@@ -1748,7 +1755,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Usuario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
+INSERT INTO `usuario` (`idUsuario`, `nombreUsuario`, `contraseña`, `fechaCreacion`, `Persona_cedulaPersona`) VALUES (NULL, 'admin', 'admin', '2016-11-13', '23542402');
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Estado_Solicitudes`
 -- -----------------------------------------------------

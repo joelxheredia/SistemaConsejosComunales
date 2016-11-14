@@ -65,10 +65,21 @@ class ConsejocomunalController extends Controller
     public function actionCreate()
     {
         $model = new Consejocomunal();
+        $usuariovocero;
+        $passwordvocero;
        // $parroquias = Parroquias::find()->all();
         $municipios = Municipios::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //*********************ESTO GENERA EL USUARIO Y LA CONTRASEÑA DEL VOCERO
+            echo $model->NombreConsejoComunal;
+            $array=explode(" ",$model->NombreConsejoComunal);
+          //  print_r($array);
+            $usuariovocero=$array[0].$array[1]."_".$model->idConsejoComunal;
+            $passwordvocero=$this->generaPass(6);
+            echo "Usuario: ".$usuariovocero." "."Password ".$passwordvocero;
+            //***************************************************************************
+
             return $this->redirect(['view', 'id' => $model->idConsejoComunal]);
         } else {
             return $this->render('create', [
@@ -126,4 +137,27 @@ class ConsejocomunalController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    protected  function generaPass($longitudPass){
+    //Se define una cadena de caractares. Te recomiendo que uses esta.
+    $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    //Obtenemos la longitud de la cadena de caracteres
+    $longitudCadena=strlen($cadena);
+     
+    //Se define la variable que va a contener la contraseña
+    $pass = "";
+    //Se define la longitud de la contraseña, en mi caso 10, pero puedes poner la longitud que quieras
+
+     
+    //Creamos la contraseña
+    for($i=1 ; $i<=$longitudPass ; $i++){
+        //Definimos numero aleatorio entre 0 y la longitud de la cadena de caracteres-1
+        $pos=rand(0,$longitudCadena-1);
+     
+        //Vamos formando la contraseña en cada iteraccion del bucle, añadiendo a la cadena $pass la letra correspondiente a la posicion $pos en la cadena de caracteres definida.
+        $pass .= substr($cadena,$pos,1);
+    }
+    return $pass;
+}
+
 }

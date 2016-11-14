@@ -93,6 +93,6 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return self::findOne(['nombreUsuario'=>$username]);
     }
     public function validatePassword($password){
-        return $this->contraseña===$password;
+        return $this->contraseÃ±a===$password;
     }
 }

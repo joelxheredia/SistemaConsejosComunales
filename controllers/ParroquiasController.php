@@ -73,7 +73,6 @@ class ParroquiasController extends Controller
             ]);
         }
     }
-
     /**
      * Updates an existing Parroquias model.
      * If update is successful, the browser will be redirected to the 'view' page.

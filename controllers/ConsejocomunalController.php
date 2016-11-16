@@ -68,7 +68,8 @@ class ConsejocomunalController extends Controller
         $usuariovocero;
         $passwordvocero;
        // $parroquias = Parroquias::find()->all();
-        $municipios = Municipios::find()->all();
+       // $municipios = Municipios::find()->all();
+        $municipios= new Municipios();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //*********************ESTO GENERA EL USUARIO Y LA CONTRASEÑA DEL VOCERO
@@ -88,6 +89,21 @@ class ConsejocomunalController extends Controller
                 
             ]);
         }
+    }
+
+     public function actionListar($id)
+    {
+        $cantParroquias= Parroquias::find()->where(['Municipios_idMunicipios'=>$id])->count();
+        $parroquias= Parroquias::find()->where(['Municipios_idMunicipios'=>$id])->all();
+
+        if($cantParroquias>0){
+            foreach ( $parroquias as $p) {
+                echo "<option value='".$p->idParroquias."'>".$p->NombreParroquia."</option>";
+            }
+        }else{
+                echo "<option>-</option>";
+        }
+       
     }
 
     /**

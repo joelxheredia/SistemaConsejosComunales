@@ -17,7 +17,18 @@ use app\models\Municipios;
     <?= $form->field($model, 'NombreConsejoComunal')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'fechaInscripcionConsejoComunal')->textInput() ?>
+    
+    
+     <?= $form->field($municipios, 'idMunicipios')->dropDownList(
+            ArrayHelper::map(Municipios::find()->all(),'idMunicipios','nombreMunicipios'),
+            ['prompt'=>'Seleccione Municipio',
+                'onchange'=>' $.post("index.php?r=consejocomunal/listar&id='.'"+$(this).val(), function(data){
+                  $( "select#consejocomunal-parroquias_idparroquias" ).html( data );      
+             });'    
 
+            ]
+      ) ?>
+   
 	 <?= $form->field($model, 'Parroquias_idParroquias')->dropDownList(
 	    	ArrayHelper::map(Parroquias::find()->all(),'idParroquias','NombreParroquia'),
 	    	['prompt'=>'Seleccione Parroquia']

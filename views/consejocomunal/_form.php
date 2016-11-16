@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use app\models\Parroquias;
 use app\models\Municipios;
+use app\models\Usuario;
 /* @var $this yii\web\View */
 /* @var $model app\models\Consejocomunal */
 /* @var $form yii\widgets\ActiveForm */
@@ -22,6 +23,8 @@ use app\models\Municipios;
 	    	ArrayHelper::map(Parroquias::find()->all(),'idParroquias','NombreParroquia'),
 	    	['prompt'=>'Seleccione Parroquia']
 	  ) ?>  
+
+       <?= $form->field($usuario, 'correoElectronico')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

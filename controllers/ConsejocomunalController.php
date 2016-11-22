@@ -190,12 +190,12 @@ class ConsejocomunalController extends Controller
 }
 
 
-/**
-     * Listar consejos comunales por información de ubicación
-     *
-     * @return string
-     */
-    public function actionListar()
+    /**
+    * Listar consejos comunales por información de ubicación
+    *
+    * @return mixed
+    */
+    public function actionListarconsejo()
     {
         //$consejos = Consejocomunal::find()->all();
         //$parroquias = Parroquias::find()->all();

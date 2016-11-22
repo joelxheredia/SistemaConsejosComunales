@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Parroquias;
 use app\models\Municipios;
+use app\models\EstadosVenezuela;
+use app\models\BuscarConsejoForm;
 use app\models\Usuario;
 /**
  * ConsejocomunalController implements the CRUD actions for Consejocomunal model.
@@ -186,5 +188,31 @@ class ConsejocomunalController extends Controller
     }
     return $pass;
 }
+
+
+    /**
+    * Listar consejos comunales por información de ubicación
+    *
+    * @return mixed
+    */
+    public function actionListarconsejo()
+    {
+        //$consejos = Consejocomunal::find()->all();
+        //$parroquias = Parroquias::find()->all();
+        //$municipios = Municipios::find()->all();
+        $estadosVenezuela = EstadosVenezuela::find()->all();
+        $buscar = new BuscarConsejoForm();
+        //$buscar->buscar ='hola';
+        if($buscar->load(Yii::$app->request->post()) && $buscar->validate()){
+            
+        }
+        return $this->render('listar', [
+                //'consejos' => $consejos,
+                //'parroquias' => $parroquias,
+                //'municipios' => $municipios,
+                'estadosVenezuela' => $estadosVenezuela,
+                'buscar' => $buscar,
+            ]);
+    }
 
 }

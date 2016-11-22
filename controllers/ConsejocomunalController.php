@@ -102,7 +102,7 @@ class ConsejocomunalController extends Controller
         }
     }
 
-     public function actionListar($id)
+     public function actionListarparroquias($id)
     {
         $cantParroquias= Parroquias::find()->where(['Municipios_idMunicipios'=>$id])->count();
         $parroquias= Parroquias::find()->where(['Municipios_idMunicipios'=>$id])->all();

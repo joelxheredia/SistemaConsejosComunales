@@ -202,6 +202,10 @@ class ConsejocomunalController extends Controller
         //$municipios = Municipios::find()->all();
         $estadosVenezuela = EstadosVenezuela::find()->all();
         $buscar = new BuscarConsejoForm();
+        //$buscar->buscar ='hola';
+        if($buscar->load(Yii::$app->request->post()) && $buscar->validate()){
+            
+        }
         return $this->render('listar', [
                 //'consejos' => $consejos,
                 //'parroquias' => $parroquias,

@@ -40,9 +40,9 @@ class BuscarConsejoForm extends Model
     {
         return [
             'estado' => 'Estado',
-            'municipio' => 'municipio',
-            'parroquia' => 'Verification Code',
-            'buscar' => 'Verification Code',
+            'municipio' => 'Municipio',
+            'parroquia' => 'Parroquia',
+            'buscar' => 'Por nombre',
         ];
     }
 

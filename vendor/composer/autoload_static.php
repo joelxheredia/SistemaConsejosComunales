@@ -23,6 +23,10 @@ class ComposerStaticInit9544ff4c085a5b9b0b9a5b455e37a093
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+        'f' => 
+        array (
+            'fedemotta\\datatables\\' => 21,
+        ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
@@ -65,6 +69,10 @@ class ComposerStaticInit9544ff4c085a5b9b0b9a5b455e37a093
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'fedemotta\\datatables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fedemotta/yii2-widget-datatables',
         ),
         'cebe\\markdown\\' => 
         array (

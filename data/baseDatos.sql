@@ -1636,7 +1636,6 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Persona` (
   `edad` INT NOT NULL,
   `sexo` VARCHAR(10) NOT NULL,
   `direccion` VARCHAR(100) NULL,
-  `correoElectronico` VARCHAR(60) NULL,
   `incapacidad` VARCHAR(4) NULL,
   `pensionado` VARCHAR(4) NULL,
   `TipoIdentificacion_idTipoIdentificacion` INT NOT NULL,
@@ -1684,7 +1683,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Persona` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `persona` (`cedulaPersona`, `primerNombre`, `segundoNombre`, `primerApellido`, `segundoApelllido`, `fechaNacimiento`, `edad`, `sexo`, `direccion`, `correoElectronico`, `incapacidad`, `pensionado`, `TipoIdentificacion_idTipoIdentificacion`, `NivelInstruccion_idNivelInstruccion`, `EstadosCiviles_idEstadosCiviles`, `Cargo_idCargo`, `ConsejoComunal_idConsejoComunal`, `Persona_cedulaPersona`) VALUES ('23542402', 'Tyson', NULL, 'Cardelli', NULL, '1993-06-15', '23', 'M', 'Av Carabobo', 'tysoncardelli@gmail.com', NULL, NULL, '1', '1', '1', '1', '1', NULL);
+INSERT INTO `persona` (`cedulaPersona`, `primerNombre`, `segundoNombre`, `primerApellido`, `segundoApelllido`, `fechaNacimiento`, `edad`, `sexo`, `direccion`, `incapacidad`, `pensionado`, `TipoIdentificacion_idTipoIdentificacion`, `NivelInstruccion_idNivelInstruccion`, `EstadosCiviles_idEstadosCiviles`, `Cargo_idCargo`, `ConsejoComunal_idConsejoComunal`, `Persona_cedulaPersona`) VALUES ('23542402', 'Tyson', NULL, 'Cardelli', NULL, '1993-06-15', '23', 'M', 'Av Carabobo', NULL, NULL, '1', '1', '1', '1', '1', NULL);
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`TipoSolicitud`
@@ -1743,9 +1742,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `nombreUsuario` VARCHAR(60) NOT NULL,
-  `contraseña` VARCHAR(50) NOT NULL,
+  `contrasena` VARCHAR(50) NOT NULL,
   `fechaCreacion` DATE NOT NULL,
-  `Persona_cedulaPersona` INT NOT NULL,
+  `correoElectronico` VARCHAR(60) NOT NULL,
+  `Persona_cedulaPersona` INT NULL,
   PRIMARY KEY (`idUsuario`),
   INDEX `fk_Usuario_Persona1_idx` (`Persona_cedulaPersona` ASC),
   CONSTRAINT `fk_Usuario_Persona1`
@@ -1755,7 +1755,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Usuario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `usuario` (`idUsuario`, `nombreUsuario`, `contraseña`, `fechaCreacion`, `Persona_cedulaPersona`) VALUES (NULL, 'admin', 'admin', '2016-11-13', '23542402');
+INSERT INTO `usuario` (`idUsuario`, `nombreUsuario`, `contrasena`, `fechaCreacion`, `correoElectronico`, `Persona_cedulaPersona`) VALUES (NULL, 'admin', 'admin', '2016-11-13','consejoscomunalesve@gmail.com', '23542402');
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Estado_Solicitudes`
 -- -----------------------------------------------------

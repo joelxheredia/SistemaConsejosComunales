@@ -12,6 +12,7 @@ use app\models\Parroquias;
 use app\models\Municipios;
 use app\models\EstadosVenezuela;
 use app\models\BuscarConsejoForm;
+use app\models\Usuario;
 /**
  * ConsejocomunalController implements the CRUD actions for Consejocomunal model.
  */
@@ -67,12 +68,14 @@ class ConsejocomunalController extends Controller
     public function actionCreate()
     {
         $model = new Consejocomunal();
+        $usuario= new Usuario();
         $usuariovocero;
         $passwordvocero;
        // $parroquias = Parroquias::find()->all();
-        $municipios = Municipios::find()->all();
+       // $municipios = Municipios::find()->all();
+        $municipios= new Municipios();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $usuario->load(Yii::$app->request->post())&&$model->save()) {
             //*********************ESTO GENERA EL USUARIO Y LA CONTRASEÑA DEL VOCERO
             echo $model->NombreConsejoComunal;
             $array=explode(" ",$model->NombreConsejoComunal);
@@ -80,16 +83,40 @@ class ConsejocomunalController extends Controller
             $usuariovocero=$array[0].$array[1]."_".$model->idConsejoComunal;
             $passwordvocero=$this->generaPass(6);
             echo "Usuario: ".$usuariovocero." "."Password ".$passwordvocero;
+            echo "<br>";
+            $usuario->nombreUsuario=$usuariovocero;
+            $usuario->contrasena=$passwordvocero;
+            $usuario->fechaCreacion=date('Y-m-d');
+
+            echo $usuario->nombreUsuario." ".$usuario->contrasena." ".$usuario->fechaCreacion." ".$usuario->correoElectronico;
+            //GUARDANDO USUARIO DEL VOCERO
+            $usuario->save();
             //***************************************************************************
 
-            return $this->redirect(['view', 'id' => $model->idConsejoComunal]);
+           return $this->redirect(['view', 'id' => $model->idConsejoComunal]);
         } else {
             return $this->render('create', [
                 'model' => $model,
                 'municipios' => $municipios,
+                'usuario' => $usuario,
                 
             ]);
         }
+    }
+
+     public function actionListar($id)
+    {
+        $cantParroquias= Parroquias::find()->where(['Municipios_idMunicipios'=>$id])->count();
+        $parroquias= Parroquias::find()->where(['Municipios_idMunicipios'=>$id])->all();
+
+        if($cantParroquias>0){
+            foreach ( $parroquias as $p) {
+                echo "<option value='".$p->idParroquias."'>".$p->NombreParroquia."</option>";
+            }
+        }else{
+                echo "<option>-</option>";
+        }
+       
     }
 
     /**

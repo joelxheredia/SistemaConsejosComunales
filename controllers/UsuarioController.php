@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Parroquias;
-use app\models\ParroquiasSearch;
+use app\models\Usuario;
+use app\models\UsuarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ParroquiasController implements the CRUD actions for Parroquias model.
+ * UsuarioController implements the CRUD actions for Usuario model.
  */
-class ParroquiasController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ParroquiasController extends Controller
     }
 
     /**
-     * Lists all Parroquias models.
+     * Lists all Usuario models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ParroquiasSearch();
+        $searchModel = new UsuarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ParroquiasController extends Controller
     }
 
     /**
-     * Displays a single Parroquias model.
+     * Displays a single Usuario model.
      * @param integer $id
      * @return mixed
      */
@@ -57,24 +57,25 @@ class ParroquiasController extends Controller
     }
 
     /**
-     * Creates a new Parroquias model.
+     * Creates a new Usuario model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Parroquias();
+        $model = new Usuario();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idParroquias]);
+            return $this->redirect(['view', 'id' => $model->idUsuario]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
+
     /**
-     * Updates an existing Parroquias model.
+     * Updates an existing Usuario model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -84,7 +85,7 @@ class ParroquiasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idParroquias]);
+            return $this->redirect(['view', 'id' => $model->idUsuario]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -93,7 +94,7 @@ class ParroquiasController extends Controller
     }
 
     /**
-     * Deletes an existing Parroquias model.
+     * Deletes an existing Usuario model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -106,15 +107,15 @@ class ParroquiasController extends Controller
     }
 
     /**
-     * Finds the Parroquias model based on its primary key value.
+     * Finds the Usuario model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Parroquias the loaded model
+     * @return Usuario the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Parroquias::findOne($id)) !== null) {
+        if (($model = Usuario::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

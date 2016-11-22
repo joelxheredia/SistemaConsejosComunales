@@ -9,8 +9,9 @@ use Yii;
  *
  * @property integer $idUsuario
  * @property string $nombreUsuario
- * @property string $contrase単a
+ * @property string $contrasena
  * @property string $fechaCreacion
+ * @property string $correoElectronico
  * @property integer $Persona_cedulaPersona
  *
  * @property Persona $personaCedulaPersona
@@ -31,11 +32,11 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['nombreUsuario', 'contrase単a', 'fechaCreacion', 'Persona_cedulaPersona'], 'required'],
+            [['nombreUsuario', 'contrasena', 'fechaCreacion', 'correoElectronico'], 'required'],
             [['fechaCreacion'], 'safe'],
             [['Persona_cedulaPersona'], 'integer'],
-            [['nombreUsuario'], 'string', 'max' => 60],
-            [['contrase単a'], 'string', 'max' => 50],
+            [['nombreUsuario', 'correoElectronico'], 'string', 'max' => 60],
+            [['contrasena'], 'string', 'max' => 50],
             [['Persona_cedulaPersona'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['Persona_cedulaPersona' => 'cedulaPersona']],
         ];
     }
@@ -48,8 +49,9 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             'idUsuario' => 'Id Usuario',
             'nombreUsuario' => 'Nombre Usuario',
-            'contrase単a' => 'Contrase祓a',
+            'contrasena' => 'Contrasena',
             'fechaCreacion' => 'Fecha Creacion',
+            'correoElectronico' => 'Correo Electronico',
             'Persona_cedulaPersona' => 'Persona Cedula Persona',
         ];
     }
@@ -93,6 +95,6 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return self::findOne(['nombreUsuario'=>$username]);
     }
     public function validatePassword($password){
-        return $this->contrase単a===$password;
+        return $this->contrasena===$password;
     }
 }

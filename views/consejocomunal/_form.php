@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use app\models\Parroquias;
 use app\models\Municipios;
+use app\models\Usuario;
 /* @var $this yii\web\View */
 /* @var $model app\models\Consejocomunal */
 /* @var $form yii\widgets\ActiveForm */
@@ -17,11 +18,24 @@ use app\models\Municipios;
     <?= $form->field($model, 'NombreConsejoComunal')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'fechaInscripcionConsejoComunal')->textInput() ?>
+    
+    
+     <?= $form->field($municipios, 'idMunicipios')->dropDownList(
+            ArrayHelper::map(Municipios::find()->all(),'idMunicipios','nombreMunicipios'),
+            ['prompt'=>'Seleccione Municipio',
+                'onchange'=>' $.post("index.php?r=consejocomunal/listar&id='.'"+$(this).val(), function(data){
+                  $( "select#consejocomunal-parroquias_idparroquias" ).html( data );      
+             });'    
 
+            ]
+      ) ?>
+   
 	 <?= $form->field($model, 'Parroquias_idParroquias')->dropDownList(
 	    	ArrayHelper::map(Parroquias::find()->all(),'idParroquias','NombreParroquia'),
 	    	['prompt'=>'Seleccione Parroquia']
 	  ) ?>  
+
+       <?= $form->field($usuario, 'correoElectronico')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

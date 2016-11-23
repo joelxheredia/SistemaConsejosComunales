@@ -80,17 +80,19 @@ class ConsejocomunalController extends Controller
             echo $model->NombreConsejoComunal;
             $array=explode(" ",$model->NombreConsejoComunal);
             print_r($array);
-            $usuariovocero=$array[0].$array[1]."_".$model->idConsejoComunal;
+            //$usuariovocero=$array[0].$array[1]."_".$model->idConsejoComunal;
             $passwordvocero=$this->generaPass(6);
-            echo "Usuario: ".$usuariovocero." "."Password ".$passwordvocero;
+           // echo "Usuario: ".$usuariovocero." "."Password ".$passwordvocero;
             echo "<br>";
-            $usuario->nombreUsuario=$usuariovocero;
+            $usuario->nombreUsuario=$usuario->correoElectronico;
             $usuario->contrasena=$passwordvocero;
             $usuario->fechaCreacion=date('Y-m-d');
 
             echo $usuario->nombreUsuario." ".$usuario->contrasena." ".$usuario->fechaCreacion." ".$usuario->correoElectronico;
             //GUARDANDO USUARIO DEL VOCERO
+            
             $usuario->save();
+            $usuario->contact($usuario->correoElectronico);
             //***************************************************************************
 
            return $this->redirect(['view', 'id' => $model->idConsejoComunal]);

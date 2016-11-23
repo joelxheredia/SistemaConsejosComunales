@@ -18,6 +18,11 @@ use Yii;
  */
 class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+
+        public $name;
+        public $emailForm;
+        public $subject;
+        public $body;
     /**
      * @inheritdoc
      */
@@ -97,4 +102,33 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function validatePassword($password){
         return $this->contrasena===$password;
     }
+
+    public function contact($email)
+    {
+    
+        $this->emailForm="consejoscomunalesve@gmail.com";
+        $this->name="Consejos Comunales Venezuela";
+        $this->subject="Clave de Acceso";
+        $this->body="Las siguientes son sus credenciales de usuario";
+        $this->body.="Usuario ".$this->nombreUsuario." Contraseña ".$this->contrasena;
+        $this->body.="Por favor complete sus datos en el siguiente enlace: http://localhost:9090/persona/create?id=".$this->idUsuario;
+
+        $content= "<p>Email: ". $this->emailForm ."</p>";
+        $content.="<p>Name: " . $this->name. "</p>";
+        $content.="<p>subject: " . $this->subject . "</p>";
+        $content.="<p>Body: " . $this->body. "</p>";
+
+        if ($this->validate()) {
+            Yii::$app->mailer->compose("@app/mail/layouts/html",["content"=>$content])
+                ->setTo($email)
+                ->setFrom([$this->emailForm => $this->name])
+                ->setSubject($this->subject)
+                ->setTextBody($this->body)
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
 }

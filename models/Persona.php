@@ -51,7 +51,7 @@ class Persona extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['primerNombre', 'primerApellido', 'fechaNacimiento', 'edad', 'sexo', 'TipoIdentificacion_idTipoIdentificacion', 'NivelInstruccion_idNivelInstruccion', 'EstadosCiviles_idEstadosCiviles', 'Cargo_idCargo', 'ConsejoComunal_idConsejoComunal'], 'required'],
+            [['cedulaPersona', 'primerNombre', 'primerApellido', 'fechaNacimiento', 'edad', 'sexo', 'TipoIdentificacion_idTipoIdentificacion', 'NivelInstruccion_idNivelInstruccion', 'EstadosCiviles_idEstadosCiviles', 'Cargo_idCargo', 'ConsejoComunal_idConsejoComunal'], 'required'],
             [['fechaNacimiento'], 'safe'],
             [['edad', 'TipoIdentificacion_idTipoIdentificacion', 'NivelInstruccion_idNivelInstruccion', 'EstadosCiviles_idEstadosCiviles', 'Cargo_idCargo', 'ConsejoComunal_idConsejoComunal', 'Persona_cedulaPersona'], 'integer'],
             [['primerNombre', 'segundoNombre', 'primerApellido', 'segundoApelllido'], 'string', 'max' => 30],
@@ -84,8 +84,8 @@ class Persona extends \yii\db\ActiveRecord
             'direccion' => 'Dirección',
             'incapacidad' => 'Incapacidad',
             'pensionado' => 'Pensionado',
-            'TipoIdentificacion_idTipoIdentificacion' => 'Tipo Identificacion',
-            'NivelInstruccion_idNivelInstruccion' => 'Nivel Instruccion',
+            'TipoIdentificacion_idTipoIdentificacion' => 'Tipo Identificación',
+            'NivelInstruccion_idNivelInstruccion' => 'Nivel Instrucción',
             'EstadosCiviles_idEstadosCiviles' => 'Estado Civil',
             'Cargo_idCargo' => 'Cargo',
             'ConsejoComunal_idConsejoComunal' => 'Consejo Comunal',

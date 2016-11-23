@@ -3,6 +3,13 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\jui\DatePicker;
+use app\models\Tipoidentificacion;
+use app\models\Nivelinstruccion;
+use app\models\Estadosciviles;
+use app\models\Cargo;
+use app\models\Consejocomunal;
+use yii\helpers\ArrayHelper;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\persona */
@@ -12,6 +19,8 @@ use yii\jui\DatePicker;
 <div class="persona-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'cedulaPersona')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'primerNombre')->textInput(['maxlength' => true]) ?>
 
@@ -31,14 +40,17 @@ use yii\jui\DatePicker;
             'options' => ['class' => 'form-control']
         ]);
         
-        echo "<label></label><br>";
+        echo "<br>";
 
         
     ?>
 
-    <?= $form->field($model, 'edad')->textInput() ?>
+    <?= $form->field($model, 'edad')->textInput() ?>    
 
-    <?= $form->field($model, 'sexo')->textInput(['maxlength' => true]) ?>
+    <?php 
+    $a=['M'=>'Masculino','F'=>'Femenino'];
+    echo $form->field($model,'sexo')->dropDownList($a,['prompt'=>'Seleccione']);
+    ?>
 
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
@@ -46,15 +58,50 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'pensionado')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TipoIdentificacion_idTipoIdentificacion')->textInput() ?>
+    <?php 
+        $tiposId = Tipoidentificacion::find()->all();        
+        $listData=ArrayHelper::map($tiposId,'idTipoIdentificacion','descripcion');
 
-    <?= $form->field($model, 'NivelInstruccion_idNivelInstruccion')->textInput() ?>
+        echo $form->field($model, 'TipoIdentificacion_idTipoIdentificacion')->dropDownList(
+                $listData, ['prompt'=>'Seleccione']);
 
-    <?= $form->field($model, 'EstadosCiviles_idEstadosCiviles')->textInput() ?>
+    ?>
 
-    <?= $form->field($model, 'Cargo_idCargo')->textInput() ?>
+    <?php 
+        $nivelInst = Nivelinstruccion::find()->all();        
+        $listData=ArrayHelper::map($nivelInst,'idNivelInstruccion','descripcion');
 
-    <?= $form->field($model, 'ConsejoComunal_idConsejoComunal')->textInput() ?>
+        echo $form->field($model, 'NivelInstruccion_idNivelInstruccion')->dropDownList(
+                $listData, ['prompt'=>'Seleccione']);
+
+    ?>    
+
+    <?php 
+        $estadosCiv = Estadosciviles::find()->all();        
+        $listData=ArrayHelper::map($estadosCiv,'idEstadosCiviles','decripcion');
+
+        echo $form->field($model, 'EstadosCiviles_idEstadosCiviles')->dropDownList(
+                $listData, ['prompt'=>'Seleccione']);
+
+    ?>    
+
+    <?php 
+        $cargos = Cargo::find()->all();        
+        $listData=ArrayHelper::map($cargos,'idCargo','nombreCargo');
+
+        echo $form->field($model, 'Cargo_idCargo')->dropDownList(
+                $listData, ['prompt'=>'Seleccione']);
+
+    ?> 
+    
+    <?php 
+        $consejos = Consejocomunal::find()->all();        
+        $listData=ArrayHelper::map($consejos,'idConsejoComunal','NombreConsejoComunal');
+
+        echo $form->field($model, 'ConsejoComunal_idConsejoComunal')->dropDownList(
+                $listData, ['prompt'=>'Seleccione']);
+
+    ?>     
 
     <?= $form->field($model, 'Persona_cedulaPersona')->textInput() ?>
 

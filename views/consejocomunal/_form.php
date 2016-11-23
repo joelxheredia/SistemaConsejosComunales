@@ -66,23 +66,24 @@ use app\models\Usuario;
   <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Nombre</label>
     <div class="col-sm-10"> 
-      <?= Html::activeInput('text', $model, 'NombreConsejoComunal', ['class' => 'form-control']) ?>
+      <?= Html::activeInput('text', $model, 'NombreConsejoComunal', ['class' => 'form-control', 'placeholder'=>'Nombre del Consejo Comunal']) ?>
+      <?= Html::error($model, 'NombreConsejoComunal', ['class' => 'text-error']) ?>
     </div>
+
   </div>
 
   <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Fecha</label>
     <div class="col-sm-10"> 
-      <?= Html::activeInput('text',$model, 'fechaInscripcionConsejoComunal', ['class' => 'form-control']) ?>
-    
+      <?= Html::activeInput('text',$model, 'fechaInscripcionConsejoComunal', ['class' => 'form-control', 'placeholder'=>'Fecha de inicio del consejo Comunal']) ?>
     </div>
   </div>
    
    <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Correo</label>
     <div class="col-sm-10"> 
-      <?= Html::activeInput('text',$usuario, 'correoElectronico', ['class' => 'form-control']) ?>
-    
+      <?= Html::activeInput('text',$usuario, 'correoElectronico', ['class' => 'form-control', 'placeholder'=>'correo electrónico del Vocero']) ?>
+      <?= Html::error($usuario, 'correoElectronico', ['class' => 'text-error']) ?>
     </div>
   </div> 
     

@@ -19,30 +19,20 @@ use app\models\Usuario;
 
     <?php $form = ActiveForm::begin([
       'options' => ['class' => 'form-horizontal'],
+
     ]); ?>
 
     <div class="form-group">
-      <label for="">Mostrar Aqui el estado </label>
+      <label for="">Táchira</label>
     </div>
 
-    <div class="form-group">
-
-    <label class="control-label col-sm-2" >Municipio:</label>
-    <div class="col-sm-4">
-      <input type="email" class="form-control" placeholder="Enter email">
-    </div>
-    <label class="control-label col-sm-2" for="email">Parroquia:</label>
-    <div class="col-sm-4">
-      <input type="email" class="form-control" id="email" placeholder="Enter email">
-    </div>
-  </div>  
 
      <?= $form->field($municipios, 'idMunicipios')->dropDownList(
-            ArrayHelper::map(Municipios::find()->all(),'idMunicipios','nombreMunicipios'),
+            ArrayHelper::map(Municipios::find()->where(['Estados_idEstados'=>19])->all(),'idMunicipios','nombreMunicipios'),
             ['prompt'=>'Seleccione Municipio',
-                'onchange'=>' $.post("index.php?r=consejocomunal/listarparroquias&id='.'"+$(this).val(), function(data){
-                  $( "select#consejocomunal-parroquias_idparroquias" ).html( data );      
-             });'    
+                'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarparroquias?id="+$(this).val(), function(data){
+                 $( "select#consejocomunal-parroquias_idparroquias" ).html( data );      
+            });',
 
             ]
       ) ?>
@@ -54,9 +44,8 @@ use app\models\Usuario;
 
     <?= $form->field($model, 'NombreConsejoComunal')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fechaInscripcionConsejoComunal')->textInput() ?>
+    <?= $form->field($model, 'fechaInscripcionConsejoComunal')->textInput()->label('Fecha ') ?>
     
-  
     <?= $form->field($usuario, 'correoElectronico')->textInput() ?>
 
     <div class="form-group">
@@ -65,13 +54,9 @@ use app\models\Usuario;
 
     <?php ActiveForm::end(); ?>
 
-
-   
-
   </div>
 </div>
 
 
-
-    
+<!--    <?php /*echo Yii::$app->getUrlManager()->getBaseUrl()."/consejocomunal/listarparroquias?id="."djn";*/ ?>-->
 

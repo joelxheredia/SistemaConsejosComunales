@@ -75,11 +75,11 @@ class ConsejocomunalController extends Controller
        // $municipios = Municipios::find()->all();
         $municipios= new Municipios();
 
-        if ($model->load(Yii::$app->request->post()) && $usuario->load(Yii::$app->request->post())&&$model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $usuario->load(Yii::$app->request->post()) &&$model->save()) {
             //*********************ESTO GENERA EL USUARIO Y LA CONTRASEÑA DEL VOCERO
             echo $model->NombreConsejoComunal;
             $array=explode(" ",$model->NombreConsejoComunal);
-          //  print_r($array);
+            print_r($array);
             $usuariovocero=$array[0].$array[1]."_".$model->idConsejoComunal;
             $passwordvocero=$this->generaPass(6);
             echo "Usuario: ".$usuariovocero." "."Password ".$passwordvocero;

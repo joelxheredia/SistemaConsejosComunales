@@ -32,6 +32,7 @@ $this->title = 'Buscar Consejos Comunales';
             </div>
         </div>
 
+
         <div class="row">
                 <?= $form->field($buscar, 'estado')->dropDownList(
             ArrayHelper::map(EstadosVenezuela::find()->all(),'idEstadosVenezuela','descripcionEstados'),

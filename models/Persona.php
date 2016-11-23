@@ -73,7 +73,7 @@ class Persona extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cedulaPersona' => 'Cedula Persona',
+            'cedulaPersona' => 'Cédula',
             'primerNombre' => 'Primer Nombre',
             'segundoNombre' => 'Segundo Nombre',
             'primerApellido' => 'Primer Apellido',
@@ -81,14 +81,14 @@ class Persona extends \yii\db\ActiveRecord
             'fechaNacimiento' => 'Fecha Nacimiento',
             'edad' => 'Edad',
             'sexo' => 'Sexo',
-            'direccion' => 'Direccion',
+            'direccion' => 'Dirección',
             'incapacidad' => 'Incapacidad',
             'pensionado' => 'Pensionado',
-            'TipoIdentificacion_idTipoIdentificacion' => 'Tipo Identificacion Id Tipo Identificacion',
-            'NivelInstruccion_idNivelInstruccion' => 'Nivel Instruccion Id Nivel Instruccion',
-            'EstadosCiviles_idEstadosCiviles' => 'Estados Civiles Id Estados Civiles',
-            'Cargo_idCargo' => 'Cargo Id Cargo',
-            'ConsejoComunal_idConsejoComunal' => 'Consejo Comunal Id Consejo Comunal',
+            'TipoIdentificacion_idTipoIdentificacion' => 'Tipo Identificacion',
+            'NivelInstruccion_idNivelInstruccion' => 'Nivel Instruccion',
+            'EstadosCiviles_idEstadosCiviles' => 'Estado Civil',
+            'Cargo_idCargo' => 'Cargo',
+            'ConsejoComunal_idConsejoComunal' => 'Consejo Comunal',
             'Persona_cedulaPersona' => 'Persona Cedula Persona',
         ];
     }

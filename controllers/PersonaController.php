@@ -69,7 +69,7 @@ class PersonaController extends Controller
             return $this->redirect(['view', 'id' => $model->cedulaPersona]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'model' => $model, 
             ]);
         }
     }

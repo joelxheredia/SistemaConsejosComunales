@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\persona;
 use app\models\personaSearch;
+use app\models\Usuario;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -66,6 +67,9 @@ class PersonaController extends Controller
         $model = new persona();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $usuario = Usuario::findOne($id);
+            $usuario->Persona_cedulaPersona = $model->cedulaPersona;
+            $usuario->update();
             return $this->redirect(['view', 'id' => $model->cedulaPersona]);
         } else {
             return $this->render('create', [

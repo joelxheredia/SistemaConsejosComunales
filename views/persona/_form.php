@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\persona */
@@ -20,7 +21,22 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'segundoApelllido')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fechaNacimiento')->textInput() ?>
+    
+
+    <?php 
+        echo '<label>Fecha de Nacimiento</label><br>'; 
+        echo DatePicker::widget([ 
+            'model' => $model,
+            'attribute' => 'fechaNacimiento',
+            'language' => 'es',
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' => ['class' => 'form-control']
+        ]);
+        
+        echo "<label></label><br>";
+
+        
+    ?>
 
     <?= $form->field($model, 'edad')->textInput() ?>
 

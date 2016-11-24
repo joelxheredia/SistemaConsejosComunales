@@ -20,6 +20,9 @@ body {
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
+.linea{
+  border-top: 1px solid #ddd;
+}
 
 .jumbotron {
     text-align: center;
@@ -97,9 +100,9 @@ a.desc:after {
       color: #818181;
   }
   h2 {
-      font-size: 24px;
+      font-size: 42px;
       text-transform: uppercase;
-      color: #303030;
+      color: #0fadec ;
       font-weight: 600;
       margin-bottom: 30px;
   }
@@ -115,6 +118,39 @@ a.desc:after {
       color: #fff;
       padding: 100px 25px;
       font-family: Montserrat, sans-serif;
+  }
+
+  .caja {
+      background-color: #fff;
+      color: #000;
+      padding: 30px 25px;
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+      font-family: Montserrat, sans-serif;
+  }
+  .caja:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+
+  .caja p{
+      font-size: 20px;
+
+  }
+  .caja img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+
+  .caja .btn {
+      margin: 15px 0;
+      background-color: #70C02F;
+      color: #fff;
+  }
+  .caja .btn:hover {
+      border: 1px solid #70C02F;
+      background-color: #fff !important;
+      color: #70C02F;
   }
   .container-fluid {
       padding: 60px 50px;
@@ -161,7 +197,7 @@ a.desc:after {
       font-style: normal;
   }
   .panel {
-      border: 1px solid #f4511e;
+      border: 1px solid #0fadec;
       border-radius:0 !important;
       transition: box-shadow 0.5s;
   }
@@ -169,13 +205,13 @@ a.desc:after {
       box-shadow: 5px 0px 40px rgba(0,0,0, .2);
   }
   .panel-footer .btn:hover {
-      border: 1px solid #f4511e;
+      border: 1px solid #70C02F;
       background-color: #fff !important;
-      color: #f4511e;
+      color: #70C02F;
   }
   .panel-heading {
       color: #fff !important;
-      background-color: #f4511e !important;
+      background-color: #0fadec !important;
       padding: 25px;
       border-bottom: 1px solid transparent;
       border-top-left-radius: 0px;
@@ -195,7 +231,7 @@ a.desc:after {
   }
   .panel-footer .btn {
       margin: 15px 0;
-      background-color: #f4511e;
+      background-color: #70C02F;
       color: #fff;
   }
   .navbar {
@@ -229,6 +265,7 @@ a.desc:after {
       margin-bottom: 20px;
       color: #f4511e;
   }
+
   .slideanim {visibility:hidden;}
   .slide {
       animation-name: slide;
@@ -237,6 +274,18 @@ a.desc:after {
       -webkit-animation-duration: 1s;
       visibility: visible;
   }
+
+  .cabecera{
+    background-color: transparent;
+  height: 100%;
+  width: 100%; 
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  }
+  .cabecera p{
+    color: #000;
+  }
+
   @keyframes slide {
     0% {
       opacity: 0;
@@ -272,4 +321,3 @@ a.desc:after {
         font-size: 150px;
     }
   }
- 

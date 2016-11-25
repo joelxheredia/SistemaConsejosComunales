@@ -17,7 +17,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 
 
 <!-- Container (Seccion 1 Principal) -->
-    <div id="pricing" class="container-fluid">
+    <div id="about" class="container-fluid">
       <div class="row "> <!--slideanim">-->
         <div class="col-sm-4 col-xs-12">
           <div class="panel panel-default text-center">
@@ -66,7 +66,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
       </div>
     </div>
 
-<div class="container-fluid bg-grey">
+<div id="funda" class="container-fluid bg-grey">
   <h2 class="text-center">Funda Comunal</h2>
   <div class="row text-center">    
     <div class="col-sm-4">
@@ -120,7 +120,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 </div>
 
 <!-- Container (Services Section) -->
-  <div class="container-fluid text-center">
+  <div id="vocero"class="container-fluid text-center">
     <h2>Voceros</h2>
     <h4>Que hacer si ya tienes el Consejo Comunal de tu comunidad constituido pero aun no estas registrado en el sistema</h4>
     <div class="row "> <!--slideanim"> -->
@@ -162,7 +162,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
   </div>
 
 <!-- Container (Portfolio Section) -->
-  <div id="portfolio" class="container-fluid text-center bg-grey">
+  <div id="familia" class="container-fluid text-center bg-grey">
     <h2>Familias</h2>
     <div class="row text-center "> <!--slideanim"> -->
       <div class="col-sm-4">
@@ -194,7 +194,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
   </div>
 
 <!-- Container (Contact Section) -->
-  <div id="contact" class="container-fluid ">
+  <div id="contacto" class="container-fluid ">
     <h2 class="text-center">CONTACTO</h2>
     <div class="row">
       <div class="col-sm-5">

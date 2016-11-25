@@ -22,8 +22,8 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<!-- 
 <?php $this->beginBody() ?>
-
 <div class="wrap">
     <?php
     NavBar::begin([
@@ -56,7 +56,7 @@ AppAsset::register($this);
     
     NavBar::end();
     ?>
-    <!--
+-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -65,21 +65,19 @@ AppAsset::register($this);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a class="navbar-brand" href="#myPage">Comunales</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#services">SERVICES</a></li>
-        <li><a href="#portfolio">PORTFOLIO</a></li>
-        <li><a href="#pricing">PRICING</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#funda">FUNDACOMUNAL</a></li>
+        <li><a href="#vocero">VOCEROS</a></li>
+        <li><a href="#familia">FAMILIAS</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
         <li><a href=""></a></li>
       </ul>
     </div>
   </div>
 </nav>
--->
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

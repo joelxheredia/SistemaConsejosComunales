@@ -236,7 +236,7 @@ a.desc:after {
   }
   .navbar {
       margin-bottom: 0;
-      background-color: #f4511e;
+      background-color: #70C02F;
       z-index: 9999;
       border: 0;
       font-size: 12px !important;
@@ -249,7 +249,7 @@ a.desc:after {
       color: #fff !important;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
-      color: #f4511e !important;
+      color: #70C02F !important;
       background-color: #fff !important;
   }
   .navbar-default .navbar-toggle {

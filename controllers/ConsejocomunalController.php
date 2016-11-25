@@ -121,6 +121,21 @@ class ConsejocomunalController extends Controller
        
     }
 
+    public function actionListarmunicipios($id)
+    {
+        $cantParroquias= Municipios::find()->where(['Estados_idEstados'=>$id])->count();
+        $parroquias= Municipios::find()->where(['Estados_idEstados'=>$id])->all();
+
+        if($cantParroquias>0){
+            foreach ( $parroquias as $p) {
+                echo "<option value='".$p->idMunicipios."'>".$p->nombreMunicipios."</option>";
+            }
+        }else{
+                echo "<option>-</option>";
+        }
+       
+    }
+
     /**
      * Updates an existing Consejocomunal model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -204,9 +219,14 @@ class ConsejocomunalController extends Controller
         //$municipios = Municipios::find()->all();
         $estadosVenezuela = EstadosVenezuela::find()->all();
         $buscar = new BuscarConsejoForm();
-        //$buscar->buscar ='hola';
-        if($buscar->load(Yii::$app->request->post()) && $buscar->validate()){
-            
+        
+        if(Yii::$app->request->post()){
+            echo $buscar->buscar;
+            $request = Yii::$app->request; 
+            $buscar->buscar = $request->post('buscar');  
+            $buscar->parroquia = $request->post('parroquia');    
+            $buscar->estado = $request->post('estado');
+            $buscar->municipio = $request->post('municipio'); 
         }
         return $this->render('listar', [
                 //'consejos' => $consejos,

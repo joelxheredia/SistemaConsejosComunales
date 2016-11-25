@@ -41,15 +41,16 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class='col-md-4'>
                 <?= Html::dropDownList('estado',$buscar->estado,
             ArrayHelper::map(EstadosVenezuela::find()->all(),'idEstadosVenezuela','descripcionEstados'),
-            ['prompt'=>'Seleccione Parroquia', 'class' =>'form-control',
+            ['prompt'=>'Seleccione Estado', 'class' =>'form-control',
             'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarmunicipios?id="+$(this).val(), function(data){
-                  $( "[name=municipio]" ).html("<option value=\"\">Seleccione Municipio</option>"+data );      
+                  $( "[name=municipio]" ).html("<option value=\"\">Seleccione Municipio</option>"+data ); 
+                  $( "[name=parroquia]" ).html("<option value=\"\">Seleccione Parroquia</option>");     
              });']
             ) ?>
             </div> 
             <div class='col-md-4'>
                 <?= Html::dropDownList('municipio',$buscar->municipio,
-            ArrayHelper::map(Municipios::find()->all(),'idMunicipios','nombreMunicipios'),
+            ArrayHelper::map(Municipios::find()->where(['idMunicipios'=>$buscar->municipio])->all(),'idMunicipios','nombreMunicipios'),
             ['prompt'=>'Seleccione Municipio', 'class' =>'form-control',
             'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarparroquias?id="+$(this).val(), function(data){
                   $( "[name=parroquia]" ).html("<option value=\"\">Seleccione Parroquia</option>"+data );      
@@ -58,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class='col-md-4'> 
                 <?= Html::dropDownList('parroquia',$buscar->parroquia,
-            ArrayHelper::map(Parroquias::find()->all(),'idParroquias','NombreParroquia'),
+            ArrayHelper::map(Parroquias::find()->where(['idParroquias'=>$buscar->parroquia])->all(),'idParroquias','NombreParroquia'),
             ['prompt'=>'Seleccione Parroquia', 'class' =>'form-control']
             ) ?> 
             </div>

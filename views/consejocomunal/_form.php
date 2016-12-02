@@ -93,6 +93,7 @@ use app\models\Usuario;
 
     <?php ActiveForm::end(); ?>
 
+<iframe src="https://www.google.com/maps/d/embed?mid=1WLm4ucnd6N9Gt5pSawFledkzZiU&hl=es" width="640" height="480"></iframe>
   </div>
 </div>
 

@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 use app\models\Parroquias;
 use app\models\Municipios;
 use app\models\Usuario;
+use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Consejocomunal */
 /* @var $form yii\widgets\ActiveForm */
@@ -19,7 +20,6 @@ use app\models\Usuario;
   <a href="#" class="list-group-item text-center">Consejos Comunales</a>
   <a href="#" class="list-group-item">Registrar Consejo Comunal</a>
   <a href="#" class="list-group-item">Listar Consejo Comunal</a>
-  <a href="#" class="list-group-item text-center">Listar Consejo Comunal</a>
   <a href="#" class="list-group-item">Contactar Vocero</a>
 </div>
 
@@ -66,7 +66,7 @@ use app\models\Usuario;
   <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Nombre</label>
     <div class="col-sm-10"> 
-      <?= Html::activeInput('text', $model, 'NombreConsejoComunal', ['class' => 'form-control', 'placeholder'=>'Nombre del Consejo Comunal']) ?>
+      <?= Html::activeInput('text', $model, 'NombreConsejoComunal', ['class' => 'form-control', 'placeholder'=>'Nombre del Consejo Comunal', 'required'=> true]) ?>
       <?= Html::error($model, 'NombreConsejoComunal', ['class' => 'text-error']) ?>
     </div>
 
@@ -75,14 +75,27 @@ use app\models\Usuario;
   <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Fecha</label>
     <div class="col-sm-10"> 
-      <?= Html::activeInput('text',$model, 'fechaInscripcionConsejoComunal', ['class' => 'form-control', 'placeholder'=>'Fecha de inicio del consejo Comunal']) ?>
+
+       <?php 
+        
+        echo DatePicker::widget([ 
+            'model' => $model,
+            'attribute' => 'fechaInscripcionConsejoComunal',
+            'language' => 'es',
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' => ['class' => 'form-control', 'placeholder'=>'fecha incripción', 'required'=> true]
+        ]);
+
+      
+    ?>
+     
     </div>
   </div>
-   
+
    <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Correo</label>
     <div class="col-sm-10"> 
-      <?= Html::activeInput('text',$usuario, 'correoElectronico', ['class' => 'form-control', 'placeholder'=>'correo electrónico del Vocero']) ?>
+      <?= Html::activeInput('email',$usuario, 'correoElectronico', ['class' => 'form-control', 'placeholder'=>'correoVocero@ejemplo.com', 'required'=> true]) ?>
       <?= Html::error($usuario, 'correoElectronico', ['class' => 'text-error']) ?>
     </div>
   </div> 

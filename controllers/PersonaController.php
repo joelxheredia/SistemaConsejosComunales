@@ -83,6 +83,14 @@ class PersonaController extends Controller
         $model = new persona();
         $municipios= new Municipios();
 
+        /*Codigo necesario informacion de ubicacion*/
+
+        /*Codigo necesario jefe de familia*/
+
+        /*Codigo miembros de la familia*/
+        
+        /*Codigo Datos de la cuenta*/
+
          return $this->render('Registrarfamilia', [
                 'model' => $model, 
                 'municipios' => $municipios,

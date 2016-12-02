@@ -22,8 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1 class="text-center">Registrar Familia</h1>
 
-
-
 </div>
 
 

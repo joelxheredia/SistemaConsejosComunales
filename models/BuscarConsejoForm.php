@@ -10,10 +10,10 @@ use yii\base\Model;
  */
 class BuscarConsejoForm extends Model
 {
-    public $estado ='';
-    public $municipio ='';
-    public $parroquia ='';
-    public $buscar = '';
+    public $estado;
+    public $municipio;
+    public $parroquia;
+    public $buscar;
 
 
     /**

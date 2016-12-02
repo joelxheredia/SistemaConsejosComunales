@@ -6,6 +6,7 @@ use Yii;
 use app\models\persona;
 use app\models\personaSearch;
 use app\models\Usuario;
+use app\models\Municipios;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -76,6 +77,16 @@ class PersonaController extends Controller
                 'model' => $model, 
             ]);
         }
+    }
+
+    public function actionRegistrarfamilia(){
+        $model = new persona();
+        $municipios= new Municipios();
+
+         return $this->render('Registrarfamilia', [
+                'model' => $model, 
+                'municipios' => $municipios,
+            ]);
     }
 
     /**

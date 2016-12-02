@@ -76,4 +76,5 @@ class Consejocomunal extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Solicitudes::className(), ['ConsejoComunal_idConsejoComunal' => 'idConsejoComunal']);
     }
+
 }

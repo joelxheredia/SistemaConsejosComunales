@@ -1,5 +1,7 @@
 <?php
-
+  
+  use yii\helpers\Html;
+  use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 
 $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
@@ -203,30 +205,43 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
         <p><span class="glyphicon glyphicon-phone"></span> +58 21212345678</p>
         <p><span class="glyphicon glyphicon-envelope"></span> contacto@comunal.com</p>
       </div>
+
+    <?php $form = ActiveForm::begin([
+     // 'options' => ['class' => 'form-horizontal'],
+      'action' => ['consejocomunal/contacto'],
+
+    ]); ?>
+
       <div class="col-sm-7 "> <!-- slideanim">  -->
         <div class="row">
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="name" name="name" placeholder="Nombre" type="text" required>
-          </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="name" name="name" placeholder="Apellido" type="text" required>
-          </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="state" name="state" placeholder="Estado" type="text" required>
-          </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-          </div>
-          <div class="col-sm-12 form-group">
-            <input class="form-control" id="asunto" name="asunto" placeholder="Asunto" type="text" required>
-          </div>
-        </div>
-        <textarea class="form-control" id="comments" name="comments" placeholder="Comentario" rows="5"></textarea><br>
+          
+            <div class="col-sm-1"></div>
+            <?= Html::activeInput('text', $usuario, 'name', ['class' => 'col-sm-5 form-group', 'placeholder'=>'Nombre', 'required'=> true]) ?>
+    
+             <div class="col-sm-1"></div>
+             <?= Html::activeInput('text', $usuario, 'surname', ['class' => 'col-sm-5 form-group', 'placeholder'=>'Apellido', 'required'=> true]) ?>
+              
+              <div class="col-sm-1"></div>
+             <?= Html::activeInput('text', $usuario, 'state', ['class' => 'col-sm-5 form-group', 'placeholder'=>'Estado', 'required'=> true]) ?>
+
+             <div class="col-sm-1"></div>
+             <?= Html::activeInput('email', $usuario, 'emailForm', ['class' => 'col-sm-5 form-group', 'placeholder'=>'Email', 'required'=> true]) ?>
+
+             <div class="col-sm-1"></div>
+             <?= Html::activeInput('text', $usuario, 'subject', ['class' => 'col-sm-11 form-group', 'placeholder'=>'Asunto', 'required'=> true]) ?>
+             <div class="col-sm-1"></div>
+
+             <?= $form->field($usuario, 'body')->textarea(['rows' => 5,'class'=>'col-sm-11 form-group','placeholder'=>'Comentario']) ?>
+
+            
+
         <div class="row">
           <div class="col-sm-12 form-group">
-            <button class="btn btn-default pull-right" type="submit">Enviar</button>
+            <?= Html::submitButton('enviar',['class'=>'btn btn-default pull-right']) ?>
           </div>
         </div>
+
+         <?php ActiveForm::end(); ?>
       </div>
     </div>
   </div>

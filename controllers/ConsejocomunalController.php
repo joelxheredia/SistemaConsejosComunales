@@ -83,6 +83,18 @@ class ConsejocomunalController extends Controller
         ]);
     }
 
+    public function actionContacto(){
+        $usuario = new Usuario();
+        if($usuario->load(Yii::$app->request->post())){
+            echo "llego formulario usuario";
+            echo $usuario->emailForm;
+            echo $usuario->name;
+            
+           $usuario->contactohome("consejoscomunalesve@gmail.com");
+        }
+
+    }
+
     /**
      * Displays a single Consejocomunal model.
      * @param integer $id

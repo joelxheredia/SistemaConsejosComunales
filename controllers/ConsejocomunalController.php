@@ -153,6 +153,12 @@ class ConsejocomunalController extends Controller
         }
     }
 
+    public function actionVerificarcarta(){
+
+
+             return $this->render('verificarcarta');
+    }
+
      public function actionListarparroquias($id)
     {
         $cantParroquias= Parroquias::find()->where(['Municipios_idMunicipios'=>$id])->count();

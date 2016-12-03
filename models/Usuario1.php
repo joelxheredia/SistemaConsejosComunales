@@ -13,41 +13,19 @@ use Yii;
  * @property string $fechaCreacion
  * @property string $correoElectronico
  * @property integer $Persona_cedulaPersona
- * @property integer $rol
  *
  * @property Persona $personaCedulaPersona
  */
 class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-    /**
-     * @inheritdoc
-     */
+
         public $name;
         public $emailForm;
         public $subject;
         public $body;
-
-    public static function isUserFundacomunal($id){
-        if(Usuario::findOne(['idUsuario'=>$id,'rol'=>1])){
-            return true;
-        } else {
-            return false;
-        }
-    }
-      public static function isUserVocero($id){
-        if(Usuario::findOne(['idUsuario'=>$id,'rol'=>2])){
-            return true;
-        } else {
-            return false;
-        }
-    }
-      public static function isUserJefeFamilia($id){
-        if(Usuario::findOne(['idUsuario'=>$id,'rol'=>3])){
-            return true;
-        } else {
-            return false;
-        }
-    }
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return 'usuario';
@@ -61,9 +39,10 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['nombreUsuario', 'contrasena', 'fechaCreacion', 'correoElectronico'], 'required'],
             [['fechaCreacion'], 'safe'],
-            [['Persona_cedulaPersona', 'rol'], 'integer'],
+            [['Persona_cedulaPersona'], 'integer'],
             [['nombreUsuario', 'correoElectronico'], 'string', 'max' => 60],
             [['contrasena'], 'string', 'max' => 50],
+            [['correoElectronico'], 'email'],
             [['Persona_cedulaPersona'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['Persona_cedulaPersona' => 'cedulaPersona']],
         ];
     }
@@ -80,7 +59,6 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'fechaCreacion' => 'Fecha Creacion',
             'correoElectronico' => 'Correo Electronico',
             'Persona_cedulaPersona' => 'Persona Cedula Persona',
-            'rol' => 'Rol',
         ];
     }
 
@@ -92,7 +70,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->hasOne(Persona::className(), ['cedulaPersona' => 'Persona_cedulaPersona']);
     }
 
-      public function getAuthKey()
+       public function getAuthKey()
     {
         return $this->idUsuario;
     }
@@ -153,4 +131,5 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         }
         return false;
     }
+
 }

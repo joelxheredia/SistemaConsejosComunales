@@ -1756,6 +1756,8 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Usuario` (
 ENGINE = InnoDB;
 
 INSERT INTO `usuario` (`idUsuario`, `nombreUsuario`, `contrasena`, `fechaCreacion`, `correoElectronico`, `Persona_cedulaPersona`) VALUES (NULL, 'admin', 'admin', '2016-11-13','consejoscomunalesve@gmail.com', '23542402');
+
+ALTER TABLE usuario ADD rol INT NOT NULL DEFAULT 1;
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Estado_Solicitudes`
 -- -----------------------------------------------------

@@ -115,7 +115,8 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
         <h4>Registra los Consejos Comunales de tu jurisdicción</h4>
       </div>
       <div class="col-sm-4">
-          <button href="  <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/create " type="button" class="btn btn-lg">Registrar</button>
+
+          <a href="  <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/create " class="btn btn-info btn-lg" role="button">Registrar</a>
       </div>     
     </div>
   </div>
@@ -124,7 +125,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 <!-- Container (Services Section) -->
   <div id="vocero"class="container-fluid text-center">
     <h2>Voceros</h2>
-    <h4>Que hacer si ya tienes el Consejo Comunal de tu comunidad constituido pero aun no estas registrado en el sistema</h4>
+    <h4>¿Que hacer si ya tienes el Consejo Comunal de tu comunidad constituido pero aun no estas registrado en el sistema?</h4>
     <div class="row "> <!--slideanim"> -->
       <div class="col-sm-4">
         <img src="img/logo-fundacomunal.png" class="logo" alt="Fundacomunal" >
@@ -166,32 +167,37 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 <!-- Container (Portfolio Section) -->
   <div id="familia" class="container-fluid text-center bg-grey">
     <h2>Familias</h2>
-    <div class="row text-center "> <!--slideanim"> -->
-      <div class="col-sm-4">
-        <div class="caja">
-          <p>Busca tu Consejo Comunal y registra a os miembros de tu familia</p>
-          <input type="email" class="form-control" size="50" placeholder="Buscar Consejo Comunal" required>
-          <button class="btn btn-lg">Buscar</button>
-          <br><br>
-          <p>No conoce el nombre del Consejo Comunal, realiza una busqueda por Estado, Municio o parroquia</p>
-          <button class="btn btn-lg">Buscar</button>
-        </div>
+    <div class="row "> <!--slideanim"> -->
+      <div class="col-md-10 col-md-offset-1">
+          <div class="col-sm-6">
+            <div class="caja">
+              <!--<p>Busca tu Consejo Comunal y registra a los miembros de tu familia</p>-->
+              <!--<input type="email" class="form-control" size="50" placeholder="Buscar Consejo Comunal" required>-->
+              <!--<button class="btn btn-lg">Buscar</button>-->
+              <br><br>
+              <p>No conoce el nombre del Consejo Comunal, realiza una busqueda por Estado, Municio o parroquia</p>
+              <a href=" <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/listarconsejo" class="btn btn-lg">Buscar Consejo</a>
+              <p>Busca tu Consejo Comunal y registra a los miembros de tu familia</p>
+            </div>
+          </div>
+          <!--<div class="col-sm-4">
+            <div class="caja">        
+              <p><strong>Verifica</strong> Si tu familia ya se encuentra registrada en el Consejo Comunal de tu comunidad</p>
+              <img src="img/familia.png" alt="Familia">
+              <button class="btn btn-lg">Verficar familia</button>
+            </div>
+          </div>-->
+          <div class="col-sm-6">
+            <div class="caja">        
+              <p><strong>Registrate</strong></p>          
+              <p>Tu familia aún no se encuentra registrada en el Consejo Comunal de tu comunidad? o no posees cuenta para ingresar al sistema?</p>
+              <img src="img/agregar.png" alt="Registrar">
+              <a href=" <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/persona/registrarfamilia" class="btn btn-lg">Registrar familia</a>
+            </div>
+          </div>
+      
       </div>
-      <div class="col-sm-4">
-        <div class="caja">        
-          <p><strong>Verifica</strong> Si tu familia ya se encuentra registrada en el Consejo Comunal de tu comunidad</p>
-          <img src="img/familia.png" alt="Familia">
-          <button class="btn btn-lg">Verficar familia</button>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="caja">        
-          <p><strong>Registrate</strong></p>          
-          <p>Tu familia aún no se encuentra registrada en el Consejo Comunal de tu comunidad? o no posees cuenta para ingresar al sistema?</p>
-          <img src="img/agregar.png" alt="Registrar">
-          <button class="btn btn-lg">Registrar familia</button>
-        </div>
-      </div>
+
     </div>
   </div>
 
@@ -237,7 +243,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 
         <div class="row">
           <div class="col-sm-12 form-group">
-            <?= Html::submitButton('enviar',['class'=>'btn btn-default pull-right']) ?>
+            <?= Html::submitButton('enviar',['class'=>'btn btn-info btn-lg pull-right']) ?>
           </div>
         </div>
 

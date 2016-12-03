@@ -86,9 +86,13 @@ class PersonaController extends Controller
         /*Codigo necesario informacion de ubicacion*/
 
         /*Codigo necesario jefe de familia*/
+    
+         if ($model->load(Yii::$app->request->post())) {
 
-         if ($model->load(Yii::$app->request->post()) &&$model->save()) {
-
+            $model->Cargo_idCargo=1;
+            $model->ConsejoComunal_idConsejoComunal=1;
+            $model->direccion="Lugar";
+            //$model->save();
          }
 
         /*Codigo miembros de la familia*/
@@ -98,6 +102,7 @@ class PersonaController extends Controller
          return $this->render('Registrarfamilia', [
                 'model' => $model, 
                 'municipios' => $municipios,
+              
             ]);
     }
 

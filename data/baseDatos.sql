@@ -1587,7 +1587,8 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`TipoIdentificacion` (
   PRIMARY KEY (`idTipoIdentificacion`))
 ENGINE = InnoDB;
 
-INSERT INTO `tipoidentificacion` (`idTipoIdentificacion`, `descripcion`) VALUES ('1', 'Cedula');
+INSERT INTO `tipoidentificacion` (`idTipoIdentificacion`, `descripcion`) VALUES ('1', 'V-');
+INSERT INTO `tipoidentificacion` (`idTipoIdentificacion`, `descripcion`) VALUES ('2', 'E-');
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`NivelInstruccion`
@@ -1609,7 +1610,11 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`EstadosCiviles` (
   PRIMARY KEY (`idEstadosCiviles`))
 ENGINE = InnoDB;
 
-INSERT INTO `estadosciviles` (`idEstadosCiviles`, `decripcion`) VALUES (NULL, 'Soltero');
+INSERT INTO `estadosciviles` (`idEstadosCiviles`, `decripcion`) VALUES (1, 'Soltero/a');
+INSERT INTO `estadosciviles` (`idEstadosCiviles`, `decripcion`) VALUES (2, 'Casado/a');
+INSERT INTO `estadosciviles` (`idEstadosCiviles`, `decripcion`) VALUES (3, 'Union Libre');
+INSERT INTO `estadosciviles` (`idEstadosCiviles`, `decripcion`) VALUES (4, 'Divorciado/a');
+INSERT INTO `estadosciviles` (`idEstadosCiviles`, `decripcion`) VALUES (5, 'Viudo');
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Cargo`
 -- -----------------------------------------------------

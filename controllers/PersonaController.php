@@ -87,6 +87,10 @@ class PersonaController extends Controller
 
         /*Codigo necesario jefe de familia*/
 
+         if ($model->load(Yii::$app->request->post()) &&$model->save()) {
+
+         }
+
         /*Codigo miembros de la familia*/
         
         /*Codigo Datos de la cuenta*/

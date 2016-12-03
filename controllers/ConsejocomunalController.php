@@ -13,6 +13,8 @@ use app\models\Municipios;
 use app\models\EstadosVenezuela;
 use app\models\BuscarConsejoForm;
 use app\models\Usuario;
+use yii\filters\AccessControl;
+
 /**
  * ConsejocomunalController implements the CRUD actions for Consejocomunal model.
  */
@@ -21,13 +23,46 @@ class ConsejocomunalController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+ /*   public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+    */
+    public function behaviors(){
+        return [
+            'access'=>[
+                'class'=> AccessControl::className(),
+                //acciones que se veran afectadas
+                'only'=>['create','logout'],
+                'rules'=>[
+                 [
+                 //el administrador tiene privilegios sobre las siguientes acciones
+                 'actions'=>['create','logout'],
+                 //Esta propiedad establece que tiene permisos
+                 'allow'=>true,
+                 //Usuarios autenticados, el signo ? es para invitados
+                 'roles'=>['@'],
+                 //Este metodo nos permite establecer un filtro sobre la identidad del usuario y asi establecer si tiene permisos o no
+                 'matchCallback'=> function ($rule,$action){
+                    //lamada al metodo que comprueba si es administrador
+                    return Usuario::isUserFundacomunal(Yii::$app->user->identity->idUsuario);
+                 },
+                ],
+            ],
+            ],
+            //Controla el modo en que se accede a las accioines
+            // a las accioines solo se puede acceder por post
+            'verbs'=>[
+                'class'=>VerbFilter::className(),
+                'actions'=>[
+                    'logout'=>['post'],
                 ],
             ],
         ];
@@ -46,6 +81,18 @@ class ConsejocomunalController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionContacto(){
+        $usuario = new Usuario();
+        if($usuario->load(Yii::$app->request->post())){
+            echo "llego formulario usuario";
+            echo $usuario->emailForm;
+            echo $usuario->name;
+            
+           $usuario->contactohome("consejoscomunalesve@gmail.com");
+        }
+
     }
 
     /**

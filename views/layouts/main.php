@@ -73,7 +73,20 @@ AppAsset::register($this);
         <li><a href="#vocero">VOCEROS</a></li>
         <li><a href="#familia">FAMILIAS</a></li>
         <li><a href="#contacto">CONTACTO</a></li>
-        <li><a href=""></a></li>
+        <?php  
+        if(Yii::$app->user->isGuest){
+            echo "<li> <a href='/site/login/'> INICIAR SESION</a></li>";
+        }
+        else{  
+            echo  '<li> '. Html::beginForm(['/site/logout'], 'post'/*, ['class' => 'navbar-form']*/).
+            Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->nombreUsuario . ')',
+                    ['class' => 'btn btn-link']
+            ).
+            Html::endForm().' </li>';
+        }
+        ?>
+
       </ul>
     </div>
   </div>

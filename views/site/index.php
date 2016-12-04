@@ -237,7 +237,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 
         <div class="row">
           <div class="col-sm-12 form-group">
-            <?= Html::submitButton('enviar',['class'=>'btn btn-default pull-right']) ?>
+            <?= Html::submitButton('enviar',['class'=>'btn btn-default pull-right','onclick'=>'alert("hola)']) ?>
           </div>
         </div>
 

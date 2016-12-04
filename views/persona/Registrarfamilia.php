@@ -24,6 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 
+
+	     <?php $formjf = ActiveForm::begin([
+			      'options' => ['class' => 'form-horizontal'],
+
+			    ]); ?>
  <div  class="list-group">
 	<a href="#demo1" class="list-group-item opcion" data-toggle="collapse">Informacion de Ubicación<span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
 	<div class="collapse" id="demo1">
@@ -44,11 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
 	        'model' => $model,
 	       	'municipios' => $municipios,
 	    ]) */?>-->
-
-	     <?php $formjf = ActiveForm::begin([
-			      'options' => ['class' => 'form-horizontal'],
-
-			    ]); ?>
 
 			      
  			     <div class="form-group">
@@ -181,11 +181,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				  	    </div>
 				  </div>
 
-				  <div class="form-group text-center">
-			        <?= Html::submitButton('Guardar', ['class' =>'btn btn-info']) ?>
-			    </div>
-
-			   <?php ActiveForm::end(); ?>
+				  
 
 
 		</div>		
@@ -193,11 +189,147 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <a href="#demo3" class="list-group-item" data-toggle="collapse">Miembros de la Familia<span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
 	<div class="collapse" id="demo3">
+		<div class="row">
+			<a id='masmiembro' class="btn btn-success">Añadir miembro</a>
+		<div class="col-md-10 col-md-offset-1">
+		<div  class="list-group" id="listamiembros">
+		<a href="#persona1" class="list-group-item opcion" data-toggle="collapse">Miembro 1<span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+		<div class="collapse" id="persona1">
+
 		<div  class="list-group-item">
-		  <ul>
-	 	 	<li>Nombre</li>
-	 	 	<li>Apellido</li>
-	 	 </ul>
+		 	 			
+		 	 			<div class="form-group">
+					  <div class="col-md-10 col-md-offset-1">
+					  
+	 			     	 <label class="control-label col-md-3" for="pwd"> Tipo Identificacion</label>
+					    <div class="col-md-3">
+					    	 <?php 
+					        $tiposId = Tipoidentificacion::find()->all();        
+					        $listData=ArrayHelper::map($tiposId,'idTipoIdentificacion','descripcion');
+
+					        echo Html::dropDownList("persona1-tipoidentificacion",null,
+					                $listData,['prompt'=>'Seleccione Tipo', 'class' =>'form-control']);
+
+					       ?>
+					    </div>
+					     <label class="control-label col-md-2" for="pwd">Cedula</label>
+					    <div class="col-md-3">
+					      <?= Html::textInput("persona1-cedula",null,
+					      ['maxlength' => true, 'class' => 'form-control']); ?>
+					    </div>
+
+				    </div>
+				   </div>
+
+				  <div class="form-group">
+					  <div class="col-md-10 col-md-offset-1">
+				  	 <label class="control-label col-md-3" for="pwd"> Primer Nombre</label>
+					    <div class="col-md-3">
+					    	<?= Html::textInput("persona1-primernombre",null,
+					    	['maxlength' => true, 'class' => 'form-control']); ?>
+					    </div>
+					     <label class="control-label col-md-3" for="pwd">Segundo Nombre</label>
+					    <div class="col-md-3">
+					       <?= Html::textInput("persona1-segundonombre",null,
+					    	['maxlength' => true, 'class' => 'form-control']); ?>
+					    </div>
+					    </div>
+				  </div>
+
+				   <div class="form-group">
+					  <div class="col-md-10 col-md-offset-1">
+				  	 <label class="control-label col-md-3" for="pwd"> Primer Apellido</label>
+					    <div class="col-md-3">
+					    	  <?= Html::textInput("persona1-primerapellido",null,
+					    	['maxlength' => true, 'class' => 'form-control']); ?>
+					    </div>
+					     <label class="control-label col-md-3" for="pwd">Segundo Apellido</label>
+					    <div class="col-md-3">
+					       <?= Html::textInput("persona1-segundoapellido",null,
+					    	['maxlength' => true, 'class' => 'form-control']); ?>
+					    </div>
+					    </div>
+				  </div>
+
+
+				  <div class="form-group">
+					  <div class="col-md-10 col-md-offset-1">
+					    <label class="control-label col-md-3" for="pwd">Fecha Nacimiento</label>
+					    <div class="col-md-3"> 
+					       <?php 
+					        echo DatePicker::widget([ 
+					            'name' => 'persona1-fechanacimiento',
+					            'language' => 'es',
+					            'dateFormat' => 'yyyy-MM-dd',
+					            'options' => ['class' => 'form-control', 'placeholder'=>'', 'required'=> true]
+					        ]);
+					      
+					    ?>
+					    </div>
+					    <label class="control-label col-md-3" for="pwd">Sexo</label>
+					    <div class="col-md-2">
+					    	 <?php
+
+							    $a=['M'=>'Masculino','F'=>'Femenino'];
+							    echo Html::radioList("persona1-sexo", null,$a);
+							    ?>
+				 </div>
+				 </div>
+				  </div>
+
+				  <div class="form-group">
+					  <div class="col-md-10 col-md-offset-1">
+				  	   <label class="control-label col-md-3" for="pwd">Estado Civil</label>
+					    <div class="col-md-3"> 
+							    <?php 
+							        $estadosCiv = Estadosciviles::find()->all();        
+							        $listData=ArrayHelper::map($estadosCiv,'idEstadosCiviles','decripcion');
+
+							        echo Html::dropDownList("persona1-estadocivil",null,
+					                $listData,['prompt'=>'Seleccione estado', 'class' =>'form-control']);
+
+							    ?> 
+					    </div>
+					    <label class="control-label col-md-3" for="pwd">Nivel Instrucción</label>
+					    <div class="col-md-3"> 
+							   
+						      <?php 
+						        $nivelInst = Nivelinstruccion::find()->all();        
+						        $listData=ArrayHelper::map($nivelInst,'idNivelInstruccion','descripcion');
+
+						        echo Html::dropDownList("persona1-nivelinstuccion",null,
+					                $listData,['prompt'=>'Seleccione nivel', 'class' =>'form-control']);
+
+						    ?>   
+					    </div>
+				  </div>
+				  </div>
+
+				  <div  class="form-group">
+					  <div class="col-md-10 col-md-offset-1">
+				  	    <label class="control-label col-md-4" for="pwd">¿Posee alguna discapacidad?</label>
+				  	    <div class="col-md-2">
+				  	    	    <?php 
+						    $inca=['F'=>'No','V'=>'Si'];
+						    echo Html::dropDownList("persona1-discapacidad",null,
+					                $inca,['class' =>'form-control']);
+						    ?>
+				  	    </div>
+				  	    <label class="control-label col-md-3" for="pwd">¿Es Pensionado?</label>
+				  	    <div class="col-md-2">
+						    <?php 
+						    $pen=['F'=>'No', 'V'=>'Si'];
+						    echo Html::dropDownList("persona1-pensionado",null,
+					                $pen,['class' =>'form-control']);
+						    ?>
+				  	    </div>
+				  </div>
+				  </div>
+			</div>
+			</div>
+
+		</div>
+		</div>
 		</div>
 	</div>
 
@@ -211,7 +343,106 @@ $this->params['breadcrumbs'][] = $this->title;
 	 	 </ul>
 		</div>
 	</div>
+
+
 </div>
+
+<div class="form-group text-center">
+			        <?= Html::submitButton('Guardar', ['class' =>'btn btn-info']) ?>
+			    </div>
+
+			   <?php ActiveForm::end(); 
+			   $this->registerJs('
+			   ini();
+			   miembro();
+			   $("#masmiembro" ).click(function() {
+  				miembro();
+				});
+			   '
+				);
+				?>
+
+<script >
+
+function ini(){
+	cantidad = 2;
+
+}
+
+function miembro(){
+alert(cantidad);
+	$("#listamiembros").append(
+				'<a href=\"#persona'+cantidad+'\" class=\"list-group-item opcion\" data-toggle=\"collapse\">'+
+				'Miembro '+cantidad+'<span class=\"glyphicon glyphicon-plus-sign pull-right\"></span></a><div class=\"collapse\" id=\"persona'+cantidad+'\"><div  class="list-group-item">'+
+				'<div class=\"form-group\"><div class=\"col-md-10 col-md-offset-1\"><label class=\"control-label col-md-3\" for=\"pwd\"> Tipo Identificacion</label>'+
+				'<div class=\"col-md-3\">'+
+				<?php  $tiposId = Tipoidentificacion::find()->all(); 
+				$listData=ArrayHelper::map($tiposId,'idTipoIdentificacion','descripcion');
+				echo "'".str_replace("&#039;","'",str_replace("\n","",Html::dropDownList("persona'+cantidad+'-tipoidentificacion",null,
+				$listData,['prompt'=>'Seleccione Tipo', 'class' =>'form-control'])))."</div>'+";?>
+				'<label class="control-label col-md-2" for="pwd">Cedula</label><div class="col-md-3">'+
+				<?php echo "'".str_replace("&#039;","'",str_replace("\n","",Html::textInput("persona'+cantidad+'-cedula",null,['maxlength' => true, 'class' => 'form-control'])))."</div></div></div>'+"; ?>
+				//nombres
+				'<div class="form-group"><div class="col-md-10 col-md-offset-1"><label class="control-label col-md-3" for="pwd"> Primer Nombre</label><div class="col-md-3">'+
+				<?= "'".str_replace("&#039;","'",str_replace("\n","",Html::textInput("persona'+cantidad+'-primernombre",null,
+					    	['maxlength' => true, 'class' => 'form-control'])))."</div>'+"; ?>
+				'<label class="control-label col-md-3" for="pwd">Segundo Nombre</label><div class="col-md-3">'+
+				<?= "'".str_replace("&#039;","'",str_replace("\n","",Html::textInput("persona'+cantidad+'-segundonombre",null,
+					    	['maxlength' => true, 'class' => 'form-control'])))."</div></div></div>'+"; ?>
+				//apellidos
+				'<div class="form-group"><div class="col-md-10 col-md-offset-1"><label class="control-label col-md-3" for="pwd"> Primer Apellido</label><div class="col-md-3">'+
+				<?= "'".str_replace("&#039;","'",str_replace("\n","",Html::textInput("persona'+cantidad+'-primerapellido",null,
+					    	['maxlength' => true, 'class' => 'form-control'])))."</div>'+"; ?>
+				'<label class="control-label col-md-3" for="pwd">Segundo Apellido</label><div class="col-md-3">'+
+				<?= "'".str_replace("&#039;","'",str_replace("\n","",Html::textInput("persona'+cantidad+'-segundoapellido",null,
+					    	['maxlength' => true, 'class' => 'form-control'])))."</div></div></div>'+"; ?>
+				//fecha y sexo
+
+
+				'</div></div>');
+/*
+					      
+<div class="form-group">
+					  <div class="col-md-10 col-md-offset-1">
+					    <label class="control-label col-md-3" for="pwd">Fecha Nacimiento</label>
+					    <div class="col-md-3"> 
+					       <?php 
+					        echo DatePicker::widget([ 
+					            'name' => 'persona1-fechanacimiento',
+					            'language' => 'es',
+					            'dateFormat' => 'yyyy-MM-dd',
+					            'options' => ['class' => 'form-control', 'placeholder'=>'', 'required'=> true]
+					        ]);
+					      
+					    ?>
+					    </div>
+					    <label class="control-label col-md-3" for="pwd">Sexo</label>
+					    <div class="col-md-2">
+					    	 <?php
+
+							    $a=['M'=>'Masculino','F'=>'Femenino'];
+							    echo Html::radioList("persona1-sexo", null,$a);
+							    ?>
+				 </div>
+				 </div>
+				  </div>
+
+
+
+*/
+cantidad++;
+
+}
+
+
+
+					 
+
+
+					    
+
+
+</script>
 
 
 

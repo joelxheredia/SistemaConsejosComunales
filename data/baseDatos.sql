@@ -1575,6 +1575,8 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`ConsejoComunal` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+ALTER TABLE ConsejoComunal ADD localizacion VARCHAR(1600) NULL;
+
 INSERT INTO `consejocomunal` (`idConsejoComunal`, `NombreConsejoComunal`, `fechaInscripcionConsejoComunal`, `Parroquias_idParroquias`) VALUES (NULL, 'Consejo Prueba', '2016-11-01', '1');
 
 
@@ -1730,6 +1732,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Solicitudes` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+ALTER TABLE Solicitudes ADD codReferecia VARCHAR(15) NOT NULL;
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Estados`
@@ -1785,6 +1788,13 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Estado_Solicitudes` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+ALTER TABLE Estado_Solicitudes ADD Persona_CedulaPersonaVocero INT NULL
+ALTER TABLE Estado_Solicitudes ADD 
+  CONSTRAINT fk_Estado_Solicitudes_Persona1 
+  FOREIGN KEY (Persona_CedulaPersonaVocero)
+  REFERENCES Persona (cedulaPersona)
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

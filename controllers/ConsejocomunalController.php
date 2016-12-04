@@ -176,6 +176,21 @@ class ConsejocomunalController extends Controller
        
     }
 
+      public function actionListarconsejosp($id)
+    {
+        $cantConsejos= Consejocomunal::find()->where(['Parroquias_idParroquias'=>$id])->count();
+        $consejos= Consejocomunal::find()->where(['Parroquias_idParroquias'=>$id])->all();
+
+        if( $cantConsejos>0){
+            foreach ( $consejos as $p) {
+                echo "<option value='".$p->idConsejoComunal."'>".$p->NombreConsejoComunal."</option>";
+            }
+        }else{
+                echo "<option>-</option>";
+        }
+       
+    }
+
     public function actionListarmunicipios($id)
     {
         $cantParroquias= Municipios::find()->where(['Estados_idEstados'=>$id])->count();

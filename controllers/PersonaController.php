@@ -6,7 +6,10 @@ use Yii;
 use app\models\persona;
 use app\models\personaSearch;
 use app\models\Usuario;
+use app\models\Parroquias;
 use app\models\Municipios;
+use app\models\EstadosVenezuela;
+use app\models\ConsejoComunal;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -83,18 +86,25 @@ class PersonaController extends Controller
         $model = new persona();
         $municipios= new Municipios();
         $usuario= new Usuario();
+        $estadosV = new Estadosvenezuela();
+        $parroquias = new Parroquias();
+        
+       
 
         /*Codigo necesario informacion de ubicacion*/
 
         /*Codigo necesario jefe de familia*/
-    
+         $valor="NADA";
          if ($model->load(Yii::$app->request->post())) {
 
-            $model->Cargo_idCargo=1;
-            $model->ConsejoComunal_idConsejoComunal=1;
-            $model->direccion="Lugar";
+            $model->Cargo_idCargo=3;
+           // $model->ConsejoComunal_idConsejoComunal=
+            
+            $valor=$model;
             //$model->save();
+
          }
+        
 
         /*Codigo miembros de la familia*/
         
@@ -104,6 +114,10 @@ class PersonaController extends Controller
                 'model' => $model, 
                 'municipios' => $municipios,
                 'usuario'=>$usuario,
+                'estadosV'=>$estadosV,
+                'parroquias' =>$parroquias,
+                'valor'=>$valor,
+               
               
             ]);
     }

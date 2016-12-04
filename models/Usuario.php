@@ -65,7 +65,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['nombreUsuario', 'contrasena', 'fechaCreacion', 'correoElectronico'], 'required'],
             [['name','surname','state','emailForm','subject','body','contransena2'], 'safe'],
             [['fechaCreacion'], 'safe'],
-            [['contrasena2'],'compare','compareAtrribute'=>'contrasena','operator'=>'=','message'=>'las contraseñas no son iguales'],
+       //     [['contrasena2'],'compare','compareAtrribute'=>'contrasena','operator'=>'=','message'=>'las contraseñas no son iguales'],
             [['Persona_cedulaPersona', 'rol'], 'integer'],
             [['nombreUsuario', 'correoElectronico'], 'string', 'max' => 60],
             [['contrasena'], 'string', 'max' => 50],

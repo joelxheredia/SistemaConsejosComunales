@@ -80,7 +80,6 @@ class SiteController extends Controller
              //   return $this->redirect(["site/admin"]);
 
           //  }
-
             return $this->goHome();
         }
 

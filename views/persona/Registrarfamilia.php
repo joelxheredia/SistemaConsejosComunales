@@ -7,7 +7,11 @@ use yii\jui\DatePicker;
 use app\models\Tipoidentificacion;
 use app\models\Nivelinstruccion;
 use app\models\Estadosciviles;
+use app\models\Parroquias;
+use app\models\Municipios;
+use app\models\EstadosVenezuela;
 use app\models\Consejocomunal;
+
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -24,19 +28,80 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 
-
 	     <?php $formjf = ActiveForm::begin([
 			      'options' => ['class' => 'form-horizontal'],
 
 			    ]); ?>
+
  <div  class="list-group">
 	<a href="#demo1" class="list-group-item opcion" data-toggle="collapse">Informacion de Ubicación<span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
 	<div class="collapse" id="demo1">
 	 	<div class="list-group-item">
-	 	 <ul>
-	 	 	<li>estado</li>
-	 	 	<li>Parroquia</li>
-	 	 </ul>
+	 	
+		<div class="form-group">
+			
+			<div class="col-sm-4">
+	      <?= Html::activeDropDownList($estadosV, 'idEstadosVenezuela',   ArrayHelper::map(EstadosVenezuela::find()->all(),'idEstadosVenezuela','descripcionEstados'),
+          ['prompt'=>'Seleccione Estado',
+                'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarmunicipios?id="+$(this).val(), function(data){
+                 $( "select#municipios-idmunicipios" ).html( data );      
+	            });',
+	            'class' =>'form-control',
+
+	            ]
+	      ) ?>
+	 		</div>
+	 		
+	 		<div  class="col-sm-4">
+	 			   <?= Html::activeDropDownList($municipios, 'idMunicipios',   ArrayHelper::map(Municipios::find()->all(),'idMunicipios','nombreMunicipios'),
+		          ['prompt'=>'Seleccione Municipio',
+		                'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarparroquias?id="+$(this).val(), function(data){
+		                 $( "select#parroquias-idparroquias" ).html( data );      
+			            });',
+			            'class' =>'form-control',
+
+			            ]
+			      ) ?>
+	 		
+	 		</div>
+	 		
+	 			<div class="col-sm-4">
+
+	 				  <?= Html::activeDropDownList($parroquias, 'idParroquias',ArrayHelper::map(Parroquias::find()->all(),'idParroquias','NombreParroquia'),
+				         ['prompt'=>'Seleccione Parroquia',
+				           'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarconsejosp?id="+$(this).val(), function(data){
+			                 $( "select#persona-consejocomunal_idconsejocomunal" ).html( data );      
+				            });',
+				            'class' =>'form-control', 
+				      ]) ?>
+	 		
+	 				
+	 			</div>
+
+
+	 	</div> 
+	 	
+	 	<div class="form-group">
+				
+			  <div class="col-md-6 col-md-offset-3">	
+			  	<label class="control-label">Consejo Comunal</label>
+	 	      <?= Html::activeDropDownList($model, 'ConsejoComunal_idConsejoComunal',ArrayHelper::map(Consejocomunal::find()->all(),'idConsejoComunal','NombreConsejoComunal'),
+		         ['prompt'=>'Seleccione consejo comunal',
+		          'class' =>'form-control',
+		      ]); ?>
+
+		      </div>
+	 		
+	 	</div>
+
+	 	<div class="form-group">
+
+	 		  <div class="col-md-6 col-md-offset-3">
+				<label class="control-label">Dirección</label>
+	 	       <?= $formjf->field($model, 'direccion')->textInput(['class' => 'form-control'])->label(false); ?>
+	 			
+	 			</div>
+	 	</div>	 	
 
 	 	</div>
 	</div>
@@ -157,7 +222,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						        $listData=ArrayHelper::map($nivelInst,'idNivelInstruccion','descripcion');
 
 						        echo $formjf->field($model, 'NivelInstruccion_idNivelInstruccion')->dropDownList(
-						                $listData, [ 'class' =>'form-control', 'prompt'=>'Seleccione'])->label(false);
+						                $listData, [ 'class' =>'form-control'])->label(false);
 
 						    ?>   
 					    </div>
@@ -180,9 +245,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						    ?>
 				  	    </div>
 				  </div>
-
-				  
-
 
 		</div>		
 	</div>
@@ -213,6 +275,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					       ?>
 					    </div>
 					     <label class="control-label col-md-2" for="pwd">Cedula</label>
+					    
 					    <div class="col-md-3">
 					      <?= Html::textInput("persona1-cedula",null,
 					      ['maxlength' => true, 'class' => 'form-control']); ?>
@@ -465,7 +528,7 @@ cantidad++;
 </script>
 
 
-
+<div><?php echo print_r($valor); ?></div>
 
 
 

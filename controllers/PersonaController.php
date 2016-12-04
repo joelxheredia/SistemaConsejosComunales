@@ -83,9 +83,26 @@ class PersonaController extends Controller
         $model = new persona();
         $municipios= new Municipios();
 
+        /*Codigo necesario informacion de ubicacion*/
+
+        /*Codigo necesario jefe de familia*/
+    
+         if ($model->load(Yii::$app->request->post())) {
+
+            $model->Cargo_idCargo=1;
+            $model->ConsejoComunal_idConsejoComunal=1;
+            $model->direccion="Lugar";
+            //$model->save();
+         }
+
+        /*Codigo miembros de la familia*/
+        
+        /*Codigo Datos de la cuenta*/
+
          return $this->render('Registrarfamilia', [
                 'model' => $model, 
                 'municipios' => $municipios,
+              
             ]);
     }
 

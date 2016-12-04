@@ -86,11 +86,13 @@ class ConsejocomunalController extends Controller
     public function actionContacto(){
         $usuario = new Usuario();
         if($usuario->load(Yii::$app->request->post())){
-            echo "llego formulario usuario";
+
             echo $usuario->emailForm;
             echo $usuario->name;
             
-           $usuario->contactohome("consejoscomunalesve@gmail.com");
+          $usuario->contactohome("consejoscomunalesve@gmail.com");
+
+            return $this->redirect(['site/contacto']);
         }
 
     }
@@ -151,6 +153,12 @@ class ConsejocomunalController extends Controller
                 
             ]);
         }
+    }
+
+    public function actionVerificarcarta(){
+
+
+             return $this->render('verificarcarta');
     }
 
      public function actionListarparroquias($id)

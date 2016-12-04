@@ -9,11 +9,12 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 <div class="site-index" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
     <div class="jumbotron text-center cabecera" style="background-image: url('img/fondo.png')">
-      <h1>Comunales</h1>
-      <p>El poder comunitario,la participación y el protaginismo popular, sus decisiones son, de carácter vinculante para el consejo comunal</p>
+      <h1>Consejos Comunales</h1>
+      <p>El poder comunitario,la participación, el protaginismo popular y sus decisiones son de carácter vinculante para el consejo comunal</p>
       <form class="form-inline">
-        <input type="email" class="form-control" size="50" placeholder="Buscar Consejo Comunal" required>
-        <a href="  <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/listarconsejo " type="button" class="btn btn-lg">Buscar</a>
+        <!--<input type="email" class="form-control" size="50" placeholder="Buscar Consejo Comunal" required>-->
+        
+        <a href="  <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/listarconsejo " role="button"  class="btn btn-info btn-lg">Buscar consejos</a>
       </form>
     </div>
 
@@ -32,7 +33,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
               <img src="img/check.png" class="img-rounded" alt="Verifica" width="30%" height="30%">
             </div>
             <div class="panel-footer">
-              <button class="btn btn-lg">Verificar</button>
+              <a href="  <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/verificarcarta " role="button"  class="btn btn-lg">Verificar</a>
             </div>
           </div>
         </div>
@@ -243,7 +244,9 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 
         <div class="row">
           <div class="col-sm-12 form-group">
-            <?= Html::submitButton('enviar',['class'=>'btn btn-info btn-lg pull-right']) ?>
+
+            <?= Html::submitButton('enviar',['class'=>'btn btn-info btn-lg pull-right','onclick'=>'alert("hola)']) ?>
+
           </div>
         </div>
 

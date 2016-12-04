@@ -169,9 +169,9 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         //$this->body.="Por favor complete sus datos en el siguiente enlace: http://localhost:9090/persona/create?id=".$this->idUsuario;
 
         $content= "<p>Email: ". $this->emailForm ."</p>";
-        $content.="<p>Name: " . $this->name. "</p>";
-        $content.="<p>subject: " . $this->subject . "</p>";
-        $content.="<p>Body: " . $this->body. "</p>";
+        $content.="<p>Nombre: " . $this->name. "</p>";
+        $content.="<p>Asunto: " . $this->subject . "</p>";
+        $content.="<p>Mensaje: " . $this->body. "</p>";
 
         //if ($this->validate()) {
             Yii::$app->mailer->compose("@app/mail/layouts/html",["content"=>$content])

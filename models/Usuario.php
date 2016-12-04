@@ -28,6 +28,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         public $emailForm;
         public $subject;
         public $body;
+        public $contrasena2;
 
     public static function isUserFundacomunal($id){
         if(Usuario::findOne(['idUsuario'=>$id,'rol'=>1])){
@@ -62,8 +63,9 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [['nombreUsuario', 'contrasena', 'fechaCreacion', 'correoElectronico'], 'required'],
-            [['name','surname','state','emailForm','subject','body'], 'safe'],
+            [['name','surname','state','emailForm','subject','body','contransena2'], 'safe'],
             [['fechaCreacion'], 'safe'],
+            [['contrasena2'],'compare','compareAtrribute'=>'contrasena','operator'=>'=','message'=>'las contraseñas no son iguales'],
             [['Persona_cedulaPersona', 'rol'], 'integer'],
             [['nombreUsuario', 'correoElectronico'], 'string', 'max' => 60],
             [['contrasena'], 'string', 'max' => 50],

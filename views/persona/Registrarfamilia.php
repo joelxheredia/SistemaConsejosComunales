@@ -332,15 +332,23 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		</div>
 	</div>
-
+		
 
 	<a href="#demo4" class="list-group-item" data-toggle="collapse">Datos de la cuenta<span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
 	<div class="collapse" id="demo4">
 		<div  class="list-group-item">
-		  <ul>
-	 	 	<li>Email</li>
-	 	 	<li>confirmar</li>
-	 	 </ul>
+				<div class="form-group">
+	 	 	<div class="col-sm-2"></div>
+	 	 	<?= Html::activeInput('text', $usuario, 'nombreUsuario', ['class' => 'col-sm-8 ', 'placeholder'=>'email', 'required'=> true]) ?>
+				<br><br>	
+					<div class="col-sm-2"></div> 	 		
+	 	 	<?= Html::activeInput('password', $usuario, 'contrasena', ['class' => 'col-sm-8 ', 'placeholder'=>'contraseña', 'required'=> true]) ?>
+	 	 		<br><br>
+	 	 			<div class="col-sm-2"></div>
+	 	 	<?= Html::activeInput('password', $usuario, 'contrasena2', ['class' => 'col-sm-8', 'placeholder'=>'confirme contraseña', 'required'=> true]) ?>
+	 	 	
+	 	 	</div>
+	
 		</div>
 	</div>
 
@@ -349,7 +357,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="form-group text-center">
 			        <?= Html::submitButton('Guardar', ['class' =>'btn btn-info']) ?>
-			    </div>
+</div>
 
 			   <?php ActiveForm::end(); 
 			   $this->registerJs('

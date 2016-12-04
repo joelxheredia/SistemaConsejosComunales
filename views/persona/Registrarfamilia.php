@@ -354,7 +354,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			   <?php ActiveForm::end(); 
 			   $this->registerJs('
 			   ini();
-			   miembro();
+			   //miembro();
 			   $("#masmiembro" ).click(function() {
   				miembro();
 				});
@@ -370,7 +370,6 @@ function ini(){
 }
 
 function miembro(){
-alert(cantidad);
 	$("#listamiembros").append(
 				'<a href=\"#persona'+cantidad+'\" class=\"list-group-item opcion\" data-toggle=\"collapse\">'+
 				'Miembro '+cantidad+'<span class=\"glyphicon glyphicon-plus-sign pull-right\"></span></a><div class=\"collapse\" id=\"persona'+cantidad+'\"><div  class="list-group-item">'+
@@ -397,35 +396,48 @@ alert(cantidad);
 				<?= "'".str_replace("&#039;","'",str_replace("\n","",Html::textInput("persona'+cantidad+'-segundoapellido",null,
 					    	['maxlength' => true, 'class' => 'form-control'])))."</div></div></div>'+"; ?>
 				//fecha y sexo
+				'<div class="form-group"><div class="col-md-10 col-md-offset-1"><label class="control-label col-md-3" for="pwd">Fecha Nacimiento</label><div class="col-md-3">'+
+				<?php 
+				echo "'".str_replace("&#039;","'",str_replace("\n","",DatePicker::widget([ 
+					            'name' => "persona'+cantidad+'-fechanacimiento",
+					            'language' => 'es',
+					            'dateFormat' => 'yyyy-MM-dd',
+					            'options' => ['class' => 'form-control', 'placeholder'=>'', 'required'=> true]
+					        ])))."</div>'+";?>
+				'<label class="control-label col-md-3" for="pwd">Sexo</label><div class="col-md-2">'+
+				<?php
+						$a=['M'=>'Masculino','F'=>'Femenino'];
+						echo "'".str_replace("&#039;","'",str_replace("\n","",Html::radioList("persona'+cantidad+'-sexo", null,$a)))."</div></div></div>'+"; ?>
+				//estado civil y nivel de instruccion
+				'<div class="form-group"><div class="col-md-10 col-md-offset-1"><label class="control-label col-md-3" for="pwd">Estado Civil</label><div class="col-md-3">'+
+				<?php 
+				$estadosCiv = Estadosciviles::find()->all();   
+				$listData=ArrayHelper::map($estadosCiv,'idEstadosCiviles','decripcion');
+				echo "'".str_replace("&#039;","'",str_replace("\n","",Html::dropDownList("persona'+cantidad+'-estadocivil",null,
+					$listData,['prompt'=>'Seleccione estado', 'class' =>'form-control'])))."</div>'+"; ?>
+				'<label class="control-label col-md-3" for="pwd">Nivel Instrucción</label><div class="col-md-3">'+
+				<?php 
+				$nivelInst = Nivelinstruccion::find()->all();   
+				$listData=ArrayHelper::map($nivelInst,'idNivelInstruccion','descripcion');
+				echo "'".str_replace("&#039;","'",str_replace("\n","",Html::dropDownList("persona'+cantidad+'-nivelinstuccion",null,
+					                $listData,['prompt'=>'Seleccione nivel', 'class' =>'form-control'])))."</div></div></div>'+";?>   
+				//discapacidad y es pensionado
+				'<div class="form-group"><div class="col-md-10 col-md-offset-1"><label class="control-label col-md-4" for="pwd">¿Posee alguna discapacidad?</label><div class="col-md-2">'+
+				<?php 
+				$inca=['F'=>'No','V'=>'Si'];
+				echo "'".str_replace("&#039;","'",str_replace("\n","",Html::dropDownList("persona'+cantidad+'-discapacidad",null,
+					                $inca,['class' =>'form-control'])))."</div>'+";; ?>
+				'<label class="control-label col-md-3" for="pwd">¿Es Pensionado?</label><div class="col-md-2">'+
+				<?php 
+				$pen=['F'=>'No', 'V'=>'Si'];
+				echo "'".str_replace("&#039;","'",str_replace("\n","",Html::dropDownList("persona'+cantidad+'-pensionado",null,
+					$pen,['class' =>'form-control'])))."</div></div></div>'+";;
+						    ?>	    
 
 
 				'</div></div>');
 /*
-					      
-<div class="form-group">
-					  <div class="col-md-10 col-md-offset-1">
-					    <label class="control-label col-md-3" for="pwd">Fecha Nacimiento</label>
-					    <div class="col-md-3"> 
-					       <?php 
-					        echo DatePicker::widget([ 
-					            'name' => 'persona1-fechanacimiento',
-					            'language' => 'es',
-					            'dateFormat' => 'yyyy-MM-dd',
-					            'options' => ['class' => 'form-control', 'placeholder'=>'', 'required'=> true]
-					        ]);
-					      
-					    ?>
-					    </div>
-					    <label class="control-label col-md-3" for="pwd">Sexo</label>
-					    <div class="col-md-2">
-					    	 <?php
 
-							    $a=['M'=>'Masculino','F'=>'Femenino'];
-							    echo Html::radioList("persona1-sexo", null,$a);
-							    ?>
-				 </div>
-				 </div>
-				  </div>
 
 
 

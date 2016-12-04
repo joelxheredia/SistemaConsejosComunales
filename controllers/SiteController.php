@@ -123,6 +123,16 @@ class SiteController extends Controller
         ]);
     }
 
+      public function actionContacto(){
+     
+            
+        //   $usuario->contactohome("consejoscomunalesve@gmail.com");
+
+            return $this->render('contacto');
+        }
+
+    
+
     /**
      * Displays about page.
      *

@@ -28,6 +28,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         public $emailForm;
         public $subject;
         public $body;
+        public $contrasena2;
 
     public static function isUserFundacomunal($id){
         if(Usuario::findOne(['idUsuario'=>$id,'rol'=>1])){
@@ -62,8 +63,9 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [['nombreUsuario', 'contrasena', 'fechaCreacion', 'correoElectronico'], 'required'],
-            [['name','surname','state','emailForm','subject','body'], 'safe'],
+            [['name','surname','state','emailForm','subject','body','contransena2'], 'safe'],
             [['fechaCreacion'], 'safe'],
+            [['contrasena2'],'compare','compareAtrribute'=>'contrasena','operator'=>'=','message'=>'las contraseñas no son iguales'],
             [['Persona_cedulaPersona', 'rol'], 'integer'],
             [['nombreUsuario', 'correoElectronico'], 'string', 'max' => 60],
             [['contrasena'], 'string', 'max' => 50],
@@ -169,9 +171,9 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         //$this->body.="Por favor complete sus datos en el siguiente enlace: http://localhost:9090/persona/create?id=".$this->idUsuario;
 
         $content= "<p>Email: ". $this->emailForm ."</p>";
-        $content.="<p>Name: " . $this->name. "</p>";
-        $content.="<p>subject: " . $this->subject . "</p>";
-        $content.="<p>Body: " . $this->body. "</p>";
+        $content.="<p>Nombre: " . $this->name. "</p>";
+        $content.="<p>Asunto: " . $this->subject . "</p>";
+        $content.="<p>Mensaje: " . $this->body. "</p>";
 
         //if ($this->validate()) {
             Yii::$app->mailer->compose("@app/mail/layouts/html",["content"=>$content])

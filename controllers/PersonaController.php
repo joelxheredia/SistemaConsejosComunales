@@ -82,6 +82,7 @@ class PersonaController extends Controller
     public function actionRegistrarfamilia(){
         $model = new persona();
         $municipios= new Municipios();
+        $usuario= new Usuario();
 
         /*Codigo necesario informacion de ubicacion*/
 
@@ -102,6 +103,7 @@ class PersonaController extends Controller
          return $this->render('Registrarfamilia', [
                 'model' => $model, 
                 'municipios' => $municipios,
+                'usuario'=>$usuario,
               
             ]);
     }

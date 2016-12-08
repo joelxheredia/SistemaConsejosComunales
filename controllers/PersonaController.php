@@ -94,14 +94,44 @@ class PersonaController extends Controller
         /*Codigo necesario informacion de ubicacion*/
 
         /*Codigo necesario jefe de familia*/
-         $valor="NADA";
-         if ($model->load(Yii::$app->request->post())) {
+       
+         
+         if ($model->load(Yii::$app->request->post())&&$usuario->load(Yii::$app->request->post())) {
 
-            $model->Cargo_idCargo=3;
-           // $model->ConsejoComunal_idConsejoComunal=
+            $model->Cargo_idCargo=1;//para que no les de error pero en realidad es 3
             
-            $valor=$model;
-            //$model->save();
+            $fechan=date("Y",strtotime($model->fechaNacimiento));
+            $model->edad=intval(date("Y"))-intval($fechan);
+            
+            $usuario->rol=3; 
+            
+            $model->save();
+            $usuario->save();
+            $request = Yii::$app->request;
+            $numero = 1;
+            while($request->post('persona'.$numero.'-tipoidentificacion')){
+                $miembro = new persona();
+                $miembro->cedulaPersona =$request->post('persona'.$numero.'-cedula');
+                $miembro->primerNombre =$request->post('persona'.$numero.'-primernombre');
+                $miembro->segundoNombre =$request->post('persona'.$numero.'-segundonombre');
+                $miembro->primerApellido =$request->post('persona'.$numero.'-segundonombre');
+                $miembro->segundoApelllido =$request->post('persona'.$numero.'-segundoapellido');
+                $miembro->fechaNacimiento =$request->post('persona'.$numero.'-fechanacimiento');
+                $miembro->edad = 15;
+                $miembro->sexo =$request->post('persona'.$numero.'-sexo');
+                $miembro->incapacidad =$request->post('persona'.$numero.'-discapacidad');
+                $miembro->pensionado =$request->post('persona'.$numero.'-pensionado');
+                $miembro->TipoIdentificacion_idTipoIdentificacion =$request->post('persona'.$numero.'-tipoidentificacion');
+                $miembro->NivelInstruccion_idNivelInstruccion =$request->post('persona'.$numero.'-nivelinstuccion');
+                $miembro->EstadosCiviles_idEstadosCiviles =$request->post('persona'.$numero.'-estadocivil');
+                $miembro->Cargo_idCargo =1;
+                $miembro->ConsejoComunal_idConsejoComunal =$model->ConsejoComunal_idConsejoComunal;
+                $miembro->Persona_cedulaPersona =$model->cedulaPersona;
+                $miembro->save();
+                $numero++;
+
+                }
+                return $this->redirect(['site/index']);
 
          }
         
@@ -116,8 +146,7 @@ class PersonaController extends Controller
                 'usuario'=>$usuario,
                 'estadosV'=>$estadosV,
                 'parroquias' =>$parroquias,
-                'valor'=>$valor,
-               
+       
               
             ]);
     }

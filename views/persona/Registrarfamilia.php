@@ -473,7 +473,7 @@ function miembro(){
 					            'name' => "persona'+cantidad+'-fechanacimiento",
 					            'language' => 'es',
 					            'dateFormat' => 'yyyy-MM-dd',
-					            'options' => ['class' => 'form-control', 'placeholder'=>'', 'required'=> true]
+					            'options' => ['class' => 'form-control', 'placeholder'=>'', 'required'=> false]
 					        ])))."</div>'+";?>
 				'<label class="control-label col-md-3" for="pwd">Sexo</label><div class="col-md-2">'+
 				<?php
@@ -528,7 +528,7 @@ cantidad++;
 </script>
 
 
-<div><?php echo print_r($valor); ?></div>
+
 
 
 

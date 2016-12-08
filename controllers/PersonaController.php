@@ -107,6 +107,31 @@ class PersonaController extends Controller
             
             $model->save();
             $usuario->save();
+            $request = Yii::$app->request;
+            $numero = 1;
+            while($request->post('persona'.$numero.'-tipoidentificacion')){
+                $miembro = new persona();
+                $miembro->cedulaPersona =$request->post('persona'.$numero.'-cedula');
+                $miembro->primerNombre =$request->post('persona'.$numero.'-primernombre');
+                $miembro->segundoNombre =$request->post('persona'.$numero.'-segundonombre');
+                $miembro->primerApellido =$request->post('persona'.$numero.'-segundonombre');
+                $miembro->segundoApelllido =$request->post('persona'.$numero.'-segundoapellido');
+                $miembro->fechaNacimiento =$request->post('persona'.$numero.'-fechanacimiento');
+                $miembro->edad = 15;
+                $miembro->sexo =$request->post('persona'.$numero.'-sexo');
+                $miembro->incapacidad =$request->post('persona'.$numero.'-discapacidad');
+                $miembro->pensionado =$request->post('persona'.$numero.'-pensionado');
+                $miembro->TipoIdentificacion_idTipoIdentificacion =$request->post('persona'.$numero.'-tipoidentificacion');
+                $miembro->NivelInstruccion_idNivelInstruccion =$request->post('persona'.$numero.'-nivelinstuccion');
+                $miembro->EstadosCiviles_idEstadosCiviles =$request->post('persona'.$numero.'-estadocivil');
+                $miembro->Cargo_idCargo =1;
+                $miembro->ConsejoComunal_idConsejoComunal =$model->ConsejoComunal_idConsejoComunal;
+                $miembro->Persona_cedulaPersona =$model->cedulaPersona;
+                $miembro->save();
+                $numero++;
+
+                }
+                return $this->redirect(['site/index']);
 
          }
         

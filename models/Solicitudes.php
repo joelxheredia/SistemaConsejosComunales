@@ -35,7 +35,7 @@ class Solicitudes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fechaRealizacion', 'Persona_cedulaPersona', 'ConsejoComunal_idConsejoComunal', 'TipoSolicitud_idTipoSolicitud', 'codReferecia'], 'required'],
+
             [['fechaRealizacion'], 'safe'],
             [['Persona_cedulaPersona', 'ConsejoComunal_idConsejoComunal', 'TipoSolicitud_idTipoSolicitud'], 'integer'],
             [['codReferecia'], 'string', 'max' => 15],
@@ -51,12 +51,13 @@ class Solicitudes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idSolicitudes' => 'Id Solicitudes',
-            'fechaRealizacion' => 'Fecha Realizacion',
-            'Persona_cedulaPersona' => 'Persona Cedula Persona',
-            'ConsejoComunal_idConsejoComunal' => 'Consejo Comunal Id Consejo Comunal',
-            'TipoSolicitud_idTipoSolicitud' => 'Tipo Solicitud Id Tipo Solicitud',
-            'codReferecia' => 'Cod Referecia',
+
+            'idSolicitudes' => 'Solicitud',
+            'fechaRealizacion' => 'Fecha de Solicitud',
+            'Persona_cedulaPersona' => 'Cédula Jefe de Familia',
+            'ConsejoComunal_idConsejoComunal' => 'Consejo Comunal',
+            'TipoSolicitud_idTipoSolicitud' => 'Tipo Solicitud',
+            'codReferecia' => 'Código de Referecia',
         ];
     }
 

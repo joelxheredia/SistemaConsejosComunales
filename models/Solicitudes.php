@@ -35,7 +35,7 @@ class Solicitudes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fechaRealizacion', 'TipoSolicitud_idTipoSolicitud'], 'required'],
+
             [['fechaRealizacion'], 'safe'],
             [['Persona_cedulaPersona', 'ConsejoComunal_idConsejoComunal', 'TipoSolicitud_idTipoSolicitud'], 'integer'],
             [['codReferecia'], 'string', 'max' => 15],
@@ -51,6 +51,7 @@ class Solicitudes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+
             'idSolicitudes' => 'Solicitud',
             'fechaRealizacion' => 'Fecha de Solicitud',
             'Persona_cedulaPersona' => 'Cédula Jefe de Familia',

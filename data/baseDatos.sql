@@ -1628,8 +1628,8 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Cargo` (
 ENGINE = InnoDB;
 
 INSERT INTO `cargo` (`idCargo`, `nombreCargo`, `descripcionCargo`) VALUES (NULL, 'Jefe FundaComunal', NULL),
-                                                                          (NULL, 'Vocero Consejo Comunal', NULL),
-                                                                          (NULL, 'Jefe de Familia', NULL);
+INSERT INTO `cargo` (`idCargo`, `nombreCargo`, `descripcionCargo`) VALUES(NULL, 'Vocero Consejo Comunal', NULL),
+INSERT INTO `cargo` (`idCargo`, `nombreCargo`, `descripcionCargo`) VALUES(NULL, 'Jefe de Familia', NULL);
 
 
 -- -----------------------------------------------------
@@ -1703,6 +1703,7 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`TipoSolicitud` (
   PRIMARY KEY (`idTipoSolicitud`))
 ENGINE = InnoDB;
 
+INSERT INTO `consejoscomunales`.`tiposolicitud` (`idTipoSolicitud`, `descripcionTipoSolicitud`) VALUES (NULL, 'carta residencia');
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Solicitudes`
@@ -1735,6 +1736,8 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Solicitudes` (
 ENGINE = InnoDB;
 
 ALTER TABLE Solicitudes ADD codReferecia VARCHAR(15) NOT NULL;
+
+INSERT INTO `consejoscomunales`.`solicitudes` (`idSolicitudes`, `fechaRealizacion`, `Persona_cedulaPersona`, `ConsejoComunal_idConsejoComunal`, `TipoSolicitud_idTipoSolicitud`, `codReferecia`) VALUES (NULL, '2016-12-01', '20', '15', '1', 'xx1');
 
 -- -----------------------------------------------------
 -- Table `ConsejosComunales`.`Estados`

@@ -118,6 +118,8 @@ class ConsejocomunalController extends Controller
      */
     public function actionCreate()
     {
+
+     
         $model = new Consejocomunal();
         $usuario= new Usuario();
         $usuariovocero;
@@ -125,6 +127,14 @@ class ConsejocomunalController extends Controller
        // $parroquias = Parroquias::find()->all();
        // $municipios = Municipios::find()->all();
         $municipios= new Municipios();
+
+          if(!Yii::$app->user->isGuest){
+
+        $usesion=Yii::$app->user->identity->idUsuario;
+        $usuarioses= Usuario::find()->where(['idUsuario'=>$usesion])->one();
+        $e=$usuarioses->personaCedulaPersona->consejoComunalIdConsejoComunal->parroquiasIdParroquias->municipiosIdMunicipios->estadosIdEstados->idEstadosVenezuela;
+        $ne=$usuarioses->personaCedulaPersona->consejoComunalIdConsejoComunal->parroquiasIdParroquias->municipiosIdMunicipios->estadosIdEstados->descripcionEstados;
+        }
 //
         if ($model->load(Yii::$app->request->post()) && $usuario->load(Yii::$app->request->post()) &&$model->save()) {
             //*********************ESTO GENERA EL USUARIO Y LA CONTRASEÑA DEL VOCERO
@@ -153,10 +163,14 @@ class ConsejocomunalController extends Controller
                 'model' => $model,
                 'municipios' => $municipios,
                 'usuario' => $usuario,
+                'est' => $e,
+                'ne'=> $ne,
                 
             ]);
         }
     }
+
+
 
     public function actionVerificarcarta(){
 
@@ -328,5 +342,39 @@ class ConsejocomunalController extends Controller
                 'buscar' => $buscar,
             ]);
     }
+
+    public function actionListarconsejof(){
+
+    if(!Yii::$app->user->isGuest){
+
+       $usesion=Yii::$app->user->identity->idUsuario;
+          $usuario= Usuario::find()->where(['idUsuario'=>$usesion])->one();
+
+    $e=$usuario->personaCedulaPersona->consejoComunalIdConsejoComunal->parroquiasIdParroquias->municipiosIdMunicipios->estadosIdEstados->idEstadosVenezuela;
+    }
+
+ 
+
+       $estadosVenezuela = EstadosVenezuela::find()->all();
+        $buscar = new BuscarConsejoForm();
+        
+        if(Yii::$app->request->post()){
+            echo $buscar->buscar;
+            $request = Yii::$app->request; 
+            $buscar->buscar = $request->post('buscar');  
+            $buscar->parroquia = $request->post('parroquia');    
+            $buscar->estado = $request->post('estado');
+            $buscar->municipio = $request->post('municipio'); 
+        }
+        return $this->render('listar', [
+                //'consejos' => $consejos,
+                //'parroquias' => $parroquias,
+                //'municipios' => $municipios,
+                'estadosVenezuela' => $estadosVenezuela,
+                'buscar' => $buscar,
+                'usesion' => $e,
+            ]); 
+    }
+
 
 }

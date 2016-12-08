@@ -9,8 +9,19 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
-AppAsset::register($this);
+
 ?>
+<?php
+         $this->registerJsFile("http://cdn.jquerytools.org/1.2.6/full/jquery.tools.min.js");
+         $this->registerJsFile('http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyBl1izE1b8j0M8y1GuX-VvbvOMmG27fFoA');
+         $this->registerJs('
+          load();
+          ');
+
+         AppAsset::register($this);
+
+        ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">

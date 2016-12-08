@@ -39,7 +39,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="row"> 
             <div class='col-md-4'>
+
+            <?php if(isset($usesion)&&$usesion!=null){ ?>
                 <?= Html::dropDownList('estado',$buscar->estado,
+            ArrayHelper::map(EstadosVenezuela::find()->where(['idEstadosVenezuela'=>$usesion])->all(),'idEstadosVenezuela','descripcionEstados'),
+            ['class' =>'form-control', 
+            'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarmunicipios?id="+$(this).val(), function(data){
+                  $( "[name=municipio]" ).html("<option value=\"\">Seleccione Municipio</option>"+data ); 
+                  $( "[name=parroquia]" ).html("<option value=\"\">Seleccione Parroquia</option>");     
+             });']
+            ) ?>
+              
+            <?php }else { ?>
+
+              <?= Html::dropDownList('estado',$buscar->estado,
             ArrayHelper::map(EstadosVenezuela::find()->all(),'idEstadosVenezuela','descripcionEstados'),
             ['prompt'=>'Seleccione Estado', 'class' =>'form-control',
             'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarmunicipios?id="+$(this).val(), function(data){
@@ -47,6 +60,10 @@ $this->params['breadcrumbs'][] = $this->title;
                   $( "[name=parroquia]" ).html("<option value=\"\">Seleccione Parroquia</option>");     
              });']
             ) ?>
+
+            <?php } ?>
+
+
             </div> 
             <div class='col-md-4'>
                 <?= Html::dropDownList('municipio',$buscar->municipio,
@@ -64,9 +81,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ) ?> 
             </div>
         </div>
-    <div class="form-group" style='margin-top:20px'>
-        <?= Html::submitButton('buscar', ['class' => 'btn btn-primary']) ?>
-    </div>
+
+
+  
+        <div class="text-center" style='margin-top:20px'><?= Html::submitButton('Buscar', ['class' => 'btn btn-info btn-lg']) ?></div>
+  
 
     <?php ActiveForm::end(); ?>
         <div class="row">

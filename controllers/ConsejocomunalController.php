@@ -13,6 +13,8 @@ use app\models\Municipios;
 use app\models\EstadosVenezuela;
 use app\models\BuscarConsejoForm;
 use app\models\Usuario;
+use app\models\Tiposolicitud;
+use app\models\Solicitudes;
 use yii\filters\AccessControl;
 
 /**
@@ -158,7 +160,26 @@ class ConsejocomunalController extends Controller
     public function actionVerificarcarta(){
 
 
-             return $this->render('verificarcarta');
+         $solicitud= new Solicitudes();   
+         $encontrada= " ";
+         if($solicitud->load(Yii::$app->request->post())){
+            //$encontrada="La carta fue emitida el: ";
+            $encontrada= Solicitudes::find()->where(['codReferecia'=>$solicitud->codReferecia])->one();
+
+            if($encontrada){
+
+                 $consej= Consejocomunal::findOne($solicitud->ConsejoComunal_idConsejoComunal);
+
+                 //$nombre = $consej->NombreConsejoComunal;
+
+                $encontrada="La Carta fue emitida por el consejo comunal "/*.$consejos->NombreConsejoComunal*/;
+            }else{
+                 $encontrada="La referencia no corresponde con ninguna carta emitida por consejos comunales";
+            }
+         }
+
+        
+        return $this->render('verificarcarta', ["model"=>$solicitud,"resul"=>$encontrada,]);
     }
 
      public function actionListarparroquias($id)

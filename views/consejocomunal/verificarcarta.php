@@ -25,13 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="form-group">
    	  <label class="control-label col-sm-2" for="pwd">Nro Identificación</label>
     <div class="col-sm-4"> 
-      <?= Html::input('text', 'codigo',"", ['class' => 'form-control']); ?>
+        <?= $form->field($model, 'codReferecia')->label(false); ?>
     </div>
    </div>
+   <div class="text-center"><h4 class="text-info"><?php echo $resul; ?></h4></div>
 
     <div class="form-group text-center">
+
         <?= Html::submitButton('Verificar Validez Carta', ['class' => 'btn btn-info btn-lg']) ?>
     </div>
 
      <?php ActiveForm::end(); ?>
 </div>
+

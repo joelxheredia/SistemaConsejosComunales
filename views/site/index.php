@@ -47,7 +47,6 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
               <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/buscar.png" class="img-rounded" alt="Buscar" width="40%" height="40%">
             </div>
             <div class="panel-footer">
-              <input type="email" class="form-control" size="50" placeholder="Buscar Consejo Comunal" required>
               <a href="  <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/listarconsejo " type="button" class="btn btn-lg">Buscar</a>
             </div>
           </div>

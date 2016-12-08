@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
        	'municipios' => $municipios,
        	'usuario'=>$usuario,
+         'e'=>$e,
     ]) ?>
 
     <div id="map" style="height: 450px; width:600px"></div>

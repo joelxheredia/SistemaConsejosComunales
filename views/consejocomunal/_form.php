@@ -42,7 +42,7 @@ use yii\jui\DatePicker;
     <label class="control-label col-sm-2" >Municipio:</label>
     <div class="col-sm-4">
 
-       <?= Html::activeDropDownList($municipios, 'idMunicipios',   ArrayHelper::map(Municipios::find()->where(['Estados_idEstados'=>19])->all(),'idMunicipios','nombreMunicipios'),
+       <?= Html::activeDropDownList($municipios, 'idMunicipios',   ArrayHelper::map(Municipios::find()->where(['Estados_idEstados'=>$e])->all(),'idMunicipios','nombreMunicipios'),
           ['prompt'=>'Seleccione Municipio',
                 'onchange'=>'$.post("'.Yii::$app->getUrlManager()->getBaseUrl().'/consejocomunal/listarparroquias?id="+$(this).val(), function(data){
                  $( "select#consejocomunal-parroquias_idparroquias" ).html( data );      

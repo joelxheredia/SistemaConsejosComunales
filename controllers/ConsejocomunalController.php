@@ -114,7 +114,7 @@ class ConsejocomunalController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($e)
     {
         $model = new Consejocomunal();
         $usuario= new Usuario();
@@ -150,6 +150,7 @@ class ConsejocomunalController extends Controller
                 'model' => $model,
                 'municipios' => $municipios,
                 'usuario' => $usuario,
+                'e'=>$e,
                 
             ]);
         }

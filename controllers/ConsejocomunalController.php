@@ -144,7 +144,8 @@ class ConsejocomunalController extends Controller
             $usuario->contact($usuario->correoElectronico);
             //***************************************************************************
 
-           return $this->redirect(['view', 'id' => $model->idConsejoComunal]);
+           //return $this->redirect(['view', 'id' => $model->idConsejoComunal]);
+            return $this->redirect(['site/login']);
         } else {
             return $this->render('create', [
                 'model' => $model,

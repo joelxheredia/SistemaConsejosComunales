@@ -51,6 +51,22 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             return false;
         }
     }
+    public static function UbicacionUsuario($id){
+        $usu = new Usuario();
+        $usu=Usuario::findONe(['idUsuario'=>$id]);
+        $pers= new Persona();
+        $pers=Persona::findOne(['cedulaPersona'=>$usu->Persona_cedulaPersona]);
+        $cons= new Consejocomunal();
+        $cons= Consejocomunal::findOne(['idConsejoComunal'=>$pers->ConsejoComunal_idConsejoComunal]);
+        $parr= new Parroquias();
+        $parr=Parroquias::findOne(['idParroquias'=>$cons->Parroquias_idParroquias]);
+        $municipio = new Municipios();
+        $municipio=Municipios::findOne(['idMunicipios'=>$parr->Municipios_idMunicipios]);
+        $estados= new Estadosvenezuela();
+        $estados=Estadosvenezuela::findOne(['idEstadosVenezuela'=>$municipio->Estados_idEstados]);
+        
+        return $estados->idEstadosVenezuela;
+    }
     public static function tableName()
     {
         return 'usuario';

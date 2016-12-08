@@ -76,16 +76,27 @@ class SiteController extends Controller
 
 
         if (!Yii::$app->user->isGuest) {
-           // if(Usuario::isUserAdmin(Yii::$app->user->identity)){
-             //   return $this->redirect(["site/admin"]);
+            if(Usuario::isUserJefeFamilia(Yii::$app->user->identity->idUsuario)){
+               
+                return $this->redirect(["consejocomunal/index"]);
 
-          //  }
-            return $this->goHome();
+            }
+            else{
+                return $this->goHome();
+            }
+            
         }
-
+//c
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if(Usuario::isUserJefeFamilia(Yii::$app->user->identity->idUsuario)){
+                $var=Usuario::UbicacionUsuario(Yii::$app->user->identity->idUsuario);
+                return $this->redirect(["consejocomunal/index?e=".$var]);
+
+            }
+            else{
+                return $this->goBack();
+            }
         }
         return $this->render('login', [
             'model' => $model,

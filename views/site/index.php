@@ -8,7 +8,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
 ?>
 <div class="site-index" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-    <div class="jumbotron text-center cabecera" style="background-image: url('img/fondo.png')">
+    <div class="jumbotron text-center cabecera" style="background-image: url('<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/fondo.png')">
       <h1>Consejos Comunales</h1>
       <p>El poder comunitario,la participación, el protaginismo popular y sus decisiones son de carácter vinculante para el consejo comunal</p>
       <form class="form-inline">
@@ -30,7 +30,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
             <div class="panel-body row" >
               
               <p><strong>Valida </strong> las cartas otorgadas por el Consejo Comunal</p>
-              <img src="img/check.png" class="img-rounded" alt="Verifica" width="30%" height="30%">
+              <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/check.png" class="img-rounded" alt="Verifica" width="30%" height="30%">
             </div>
             <div class="panel-footer">
               <a href="  <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/consejocomunal/verificarcarta " role="button"  class="btn btn-lg">Verificar</a>
@@ -44,7 +44,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
             </div>
             <div class="panel-body">
               <p><strong> Los diferentes</strong>  Consejos Comunales</p>
-              <img src="img/buscar.png" class="img-rounded" alt="Buscar" width="40%" height="40%">
+              <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/buscar.png" class="img-rounded" alt="Buscar" width="40%" height="40%">
             </div>
             <div class="panel-footer">
               <input type="email" class="form-control" size="50" placeholder="Buscar Consejo Comunal" required>
@@ -59,7 +59,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
             </div>
             <div class="panel-body">
               <p><strong> Los pasos</strong>  para la cosntitución de un nuevo Consejos Comunales</p>
-              <img src="img/pasos.png" class="img-rounded" alt="Pasos" width="40%" height="40%">
+              <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/pasos.png" class="img-rounded" alt="Pasos" width="40%" height="40%">
             </div>
             <div class="panel-footer">
               <button class="btn btn-lg">Ver</button>
@@ -84,25 +84,25 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
       <div class="container-fluid text-center panel">
         <div class="row "> <!--slideanim"> -->
           <div class="col-sm-4">
-            <img src="img/paso1.png" class="img-rounded" alt="Paso1" >
+            <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/paso1.png" class="img-rounded" alt="Paso1" >
             <p>Conformar equipo promotor</p>
           </div>
           <div class="col-sm-4">
-            <img src="img/paso2.png" class="img-rounded" alt="Paso2" >
+            <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/paso2.png" class="img-rounded" alt="Paso2" >
             <p>Difundir el alcance, objetivos y fines del Consejo Comunal</p>
           </div>
           <div class="col-sm-4">
-            <img src="img/paso3.png" class="img-rounded" alt="Paso3" >
+            <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/paso3.png" class="img-rounded" alt="Paso3" >
             <p>Elaborar el croquis del ámbito geográfico de la comunidad</p>
           </div>          
         </div>
         <div class="row">
           <div class="col-sm-4">
-            <img src="img/paso4.png" class="img-rounded" alt="Paso4" >
+            <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/paso4.png" class="img-rounded" alt="Paso4" >
             <p>Elegir el equipo electoral provicional en asamblea ciudadana</p>
           </div>
           <div class="col-sm-4">
-            <img src="img/paso5.png" class="img-rounded" alt="Paso5" >
+            <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/paso5.png" class="img-rounded" alt="Paso5" >
             <p>Elegir voceros y voceras en asamblea constitutiva</p>
           </div>
         </div>
@@ -129,15 +129,15 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
     <h4>¿Que hacer si ya tienes el Consejo Comunal de tu comunidad constituido pero aun no estas registrado en el sistema?</h4>
     <div class="row "> <!--slideanim"> -->
       <div class="col-sm-4">
-        <img src="img/logo-fundacomunal.png" class="logo" alt="Fundacomunal" >
+        <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/logo-fundacomunal.png" class="logo" alt="Fundacomunal" >
         <h4>Dirigite a la sede mas cercana de FundaComunal</h4>
       </div>
       <div class="col-sm-4">
-        <img src="img/recaudos.png" class="logo" alt="Recaudos" >
+        <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/recaudos.png" class="logo" alt="Recaudos" >
         <h4>Consigna el acta constitutiva, correo electrónico del Consejo Comunal</h4>      
       </div>
       <div class="col-sm-4">
-        <img src="img/confirmar.png" class="logo" alt="Confirmar cuenta" >
+        <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/confirmar.png" class="logo" alt="Confirmar cuenta" >
         <h4>Ingresa al correo electronico suministrado y verifica la cuenta</h4>      
       </div>
     </div>
@@ -192,7 +192,7 @@ $this->title = 'hw_Output_Document(hw_document)rganización Comunal';
             <div class="caja">        
               <p><strong>Registrate</strong></p>          
               <p>Tu familia aún no se encuentra registrada en el Consejo Comunal de tu comunidad? o no posees cuenta para ingresar al sistema?</p>
-              <img src="img/agregar.png" alt="Registrar">
+              <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/img/agregar.png" alt="Registrar">
               <a href=" <?php  echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/persona/registrarfamilia" class="btn btn-lg">Registrar familia</a>
             </div>
           </div>

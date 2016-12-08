@@ -22,6 +22,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+    //Yii::$app->controller->id
 <!-- 
 <?php $this->beginBody() ?>
 <div class="wrap">
@@ -65,17 +66,24 @@ AppAsset::register($this);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#myPage">Comunales</a>
+
+        <?php if(Yii::$app->controller->id=='site' && Yii::$app->controller->action->id== 'index'){?>
+        <a class="navbar-brand" href="#myPage">Comunales</a>
+        <?php }else{?>
+      <a class="navbar-brand" href="<?php echo Yii::$app->getUrlManager()->getBaseUrl();?>/site/index">Comunales</a>
+        <?php }?>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
+        <?php if(Yii::$app->controller->id=='site' && Yii::$app->controller->action->id== 'index'){?>
         <li><a href="#funda">FUNDACOMUNAL</a></li>
         <li><a href="#vocero">VOCEROS</a></li>
         <li><a href="#familia">FAMILIAS</a></li>
         <li><a href="#contacto">CONTACTO</a></li>
         <?php  
+        }
         if(Yii::$app->user->isGuest){
-            echo "<li> <a href='/site/login/'> INICIAR SESION</a></li>";
+            echo "<li> <a href='".Yii::$app->getUrlManager()->getBaseUrl()."/site/login/'> INICIAR SESION</a></li>";
         }
         else{  
             echo  '<li> '. Html::beginForm(['/site/logout'], 'post'/*, ['class' => 'navbar-form']*/).

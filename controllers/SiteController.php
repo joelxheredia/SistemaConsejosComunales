@@ -86,7 +86,7 @@ class SiteController extends Controller
             }
             
         }
-
+//c
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             if(Usuario::isUserJefeFamilia(Yii::$app->user->identity->idUsuario)){

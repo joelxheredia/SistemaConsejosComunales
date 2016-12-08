@@ -528,7 +528,7 @@ cantidad++;
 </script>
 
 
-<div><?php echo print_r($valor); ?></div>
+
 
 
 

@@ -1627,7 +1627,9 @@ CREATE TABLE IF NOT EXISTS `ConsejosComunales`.`Cargo` (
   PRIMARY KEY (`idCargo`))
 ENGINE = InnoDB;
 
-INSERT INTO `cargo` (`idCargo`, `nombreCargo`, `descripcionCargo`) VALUES (NULL, 'Jefe FundaComunal', NULL);
+INSERT INTO `cargo` (`idCargo`, `nombreCargo`, `descripcionCargo`) VALUES (NULL, 'Jefe FundaComunal', NULL),
+                                                                          (NULL, 'Vocero Consejo Comunal', NULL),
+                                                                          (NULL, 'Jefe de Familia', NULL);
 
 
 -- -----------------------------------------------------

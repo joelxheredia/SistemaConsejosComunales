@@ -94,14 +94,19 @@ class PersonaController extends Controller
         /*Codigo necesario informacion de ubicacion*/
 
         /*Codigo necesario jefe de familia*/
-         $valor="NADA";
-         if ($model->load(Yii::$app->request->post())) {
+       
+         
+         if ($model->load(Yii::$app->request->post())&&$usuario->load(Yii::$app->request->post())) {
 
-            $model->Cargo_idCargo=3;
-           // $model->ConsejoComunal_idConsejoComunal=
+            $model->Cargo_idCargo=1;//para que no les de error pero en realidad es 3
             
-            $valor=$model;
-            //$model->save();
+            $fechan=date("Y",strtotime($model->fechaNacimiento));
+            $model->edad=intval(date("Y"))-intval($fechan);
+            
+            $usuario->rol=3; 
+            
+            $model->save();
+            $usuario->save();
 
          }
         
@@ -116,8 +121,7 @@ class PersonaController extends Controller
                 'usuario'=>$usuario,
                 'estadosV'=>$estadosV,
                 'parroquias' =>$parroquias,
-                'valor'=>$valor,
-               
+       
               
             ]);
     }
